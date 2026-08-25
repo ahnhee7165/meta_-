@@ -85,74 +85,112 @@
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  body { padding-bottom: 64px; }
 
-  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+  /* ---------- shell: sidebar + content ---------- */
+  .app-shell { display: flex; align-items: flex-start; min-height: 100vh; }
 
-  header.top {
-    background: var(--surface-1);
-    border-bottom: 1px solid var(--border);
-    padding: 28px 0 24px;
-    position: relative;
+  .sidebar {
+    width: 248px; flex: none;
+    background: var(--surface-1); border-right: 1px solid var(--border);
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    padding: 22px 16px 16px; display: flex; flex-direction: column; gap: 18px;
   }
-  header.top .eyebrow {
-    font-size: 12.5px; font-weight: 600; letter-spacing: .04em;
-    color: var(--text-muted); text-transform: uppercase; margin: 0 0 6px;
+  .sidebar .brand .eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+    color: var(--text-muted); margin: 0 0 6px;
   }
-  header.top h1 { font-size: 26px; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }
-  header.top p.sub { font-size: 14px; color: var(--text-secondary); margin: 0; }
+  .sidebar .brand h1 { font-size: 17px; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.01em; line-height: 1.3; }
+  .sidebar .brand .sub { font-size: 11.5px; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+
   .theme-toggle {
-    position: absolute; top: 24px; right: 20px;
     border: 1px solid var(--border); background: var(--surface-2);
-    color: var(--text-secondary); font-size: 12.5px; font-weight: 600;
-    padding: 7px 12px; border-radius: 999px; cursor: pointer;
+    color: var(--text-secondary); font-size: 12px; font-weight: 700;
+    padding: 8px 12px; border-radius: 999px; cursor: pointer; width: 100%;
   }
   .theme-toggle:hover { color: var(--text-primary); }
 
-  nav.toc {
-    display: flex; gap: 4px; flex-wrap: wrap; padding: 12px 0 0;
+  nav.side-nav { display: flex; flex-direction: column; gap: 2px; }
+  nav.side-nav a {
+    font-size: 13.5px; font-weight: 700; color: var(--text-secondary);
+    text-decoration: none; padding: 9px 10px; border-radius: 8px;
+    display: flex; align-items: center; gap: 9px;
   }
-  nav.toc a {
-    font-size: 12.5px; font-weight: 600; color: var(--text-secondary);
-    text-decoration: none; padding: 6px 10px; border-radius: 6px;
+  nav.side-nav a .n {
+    width: 20px; height: 20px; border-radius: 6px; background: var(--surface-2);
+    color: var(--text-muted); font-size: 10.5px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; flex: none;
   }
-  nav.toc a:hover { background: var(--surface-2); color: var(--text-primary); }
+  nav.side-nav a:hover { background: var(--surface-2); color: var(--text-primary); }
+  nav.side-nav a.top5-link { color: var(--status-good); }
+  nav.side-nav a.top5-link .n { background: color-mix(in srgb, var(--status-good) 18%, transparent); color: var(--status-good); }
 
-  section { padding: 36px 0; border-bottom: 1px solid var(--border); }
+  .top5-mini { margin-top: auto; border-top: 1px solid var(--border); padding-top: 14px; }
+  .top5-mini h4 {
+    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--text-muted); margin: 0 0 10px; display: flex; align-items: center; gap: 6px;
+  }
+  .top5-mini ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+  .top5-mini li { display: flex; align-items: center; gap: 8px; }
+  .top5-mini .rank {
+    width: 18px; height: 18px; border-radius: 5px; background: var(--surface-2);
+    font-weight: 800; font-size: 10px; color: var(--text-secondary);
+    display: flex; align-items: center; justify-content: center; flex: none;
+  }
+  .top5-mini .name {
+    flex: 1; min-width: 0; font-size: 11.5px; color: var(--text-secondary);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .top5-mini .roas { font-weight: 800; color: var(--status-good); font-size: 11.5px; flex: none; }
+
+  .content { flex: 1; min-width: 0; }
+  .content-inner { max-width: 980px; margin: 0 auto; padding: 30px 32px 70px; }
+
+  @media (max-width: 880px) {
+    .app-shell { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: relative; flex-direction: row; align-items: center; overflow-x: auto; gap: 14px; }
+    .sidebar .brand { flex: none; }
+    nav.side-nav { flex-direction: row; }
+    .top5-mini { display: none; }
+    .theme-toggle { width: auto; }
+  }
+
+  section { padding: 30px 0; border-bottom: 1px solid var(--border); scroll-margin-top: 16px; }
   section:last-of-type { border-bottom: none; }
-  section h2 {
-    font-size: 18px; font-weight: 700; margin: 0 0 4px; letter-spacing: -0.01em;
-  }
-  section p.desc { font-size: 13.5px; color: var(--text-secondary); margin: 0 0 20px; max-width: 760px; line-height: 1.55; }
+  .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  section h2 { font-size: 18px; font-weight: 800; margin: 0 0 4px; letter-spacing: -0.01em; }
+  section p.desc { font-size: 13.5px; color: var(--text-secondary); margin: 0 0 20px; max-width: 640px; line-height: 1.55; }
 
-  .kpi-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  /* range dropdown */
+  .select-wrap { position: relative; flex: none; margin-bottom: 20px; }
+  select.range-select {
+    appearance: none; -webkit-appearance: none;
+    background: var(--surface-2); border: 1px solid var(--border); color: var(--text-primary);
+    font-family: inherit; font-weight: 700; font-size: 13px;
+    padding: 9px 34px 9px 14px; border-radius: 9px; cursor: pointer;
   }
-  @media (max-width: 900px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
-  .kpi-card {
-    background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px;
-    padding: 16px 18px;
+  select.range-select:focus { outline: 2px solid var(--series-1); outline-offset: 1px; }
+  .select-wrap .arrow {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    pointer-events: none; color: var(--text-muted); font-size: 11px;
   }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  @media (max-width: 700px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+  .kpi-card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
   .kpi-card .label { font-size: 12.5px; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; }
-  .kpi-card .value { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; }
+  .kpi-card .value { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
   .kpi-card .value.accent-good { color: var(--status-good); }
   .kpi-card .foot { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
 
-  .card {
-    background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px;
-    padding: 18px 20px 14px; margin-bottom: 16px;
-  }
+  .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px 14px; margin-bottom: 16px; }
   .card h3 { font-size: 14px; font-weight: 700; margin: 0 0 2px; }
   .card p.note { font-size: 12px; color: var(--text-muted); margin: 0 0 10px; }
-  .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 900px) { .card-row { grid-template-columns: 1fr; } }
 
   .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
   .legend .item { display: flex; align-items: center; gap: 6px; }
   .legend .swatch { width: 10px; height: 10px; border-radius: 3px; flex: none; }
 
   svg.chart { display: block; width: 100%; height: auto; overflow: visible; }
-  .axis-label { font-size: 10.5px; fill: var(--text-muted); }
   .gridline { stroke: var(--gridline); stroke-width: 1; }
   .baseline { stroke: var(--baseline); stroke-width: 1; }
   .bar-label { font-size: 11px; fill: var(--text-secondary); font-weight: 600; }
@@ -170,11 +208,9 @@
   .tooltip b { font-weight: 700; }
 
   table.dtable { width: 100%; border-collapse: collapse; font-size: 12.5px; }
-  table.dtable caption { text-align: left; font-size: 12px; color: var(--text-muted); padding-bottom: 6px; }
   table.dtable th, table.dtable td {
     text-align: right; padding: 7px 10px; border-bottom: 1px solid var(--gridline);
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
   }
   table.dtable th:first-child, table.dtable td:first-child { text-align: left; font-variant-numeric: normal; white-space: normal; }
   table.dtable thead th {
@@ -211,186 +247,209 @@
   }
   .insight-list li b { color: var(--text-primary); }
 
-  footer.foot {
-    padding: 28px 0 8px; font-size: 12px; color: var(--text-muted); line-height: 1.7;
+  /* top5 section */
+  .top5-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  @media (max-width: 760px) { .top5-grid { grid-template-columns: repeat(2, 1fr); } }
+  .top5-card {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px;
+    padding: 20px 14px 14px; text-align: center; position: relative;
   }
+  .top5-card .rank-badge {
+    position: absolute; top: 10px; left: 12px; font-size: 11px; font-weight: 800; color: var(--text-muted);
+  }
+  .top5-card .medal { font-size: 22px; margin-bottom: 2px; }
+  .top5-card .roas-big { font-size: 26px; font-weight: 800; color: var(--status-good); margin: 2px 0 8px; }
+  .top5-card .roas-big .u { font-size: 11px; font-weight: 700; color: var(--text-muted); margin-left: 2px; }
+  .top5-card .name {
+    font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-bottom: 12px; min-height: 34px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .top5-card .stats { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 9px; }
+  .top5-card .stats b { display: block; color: var(--text-primary); font-size: 12px; font-weight: 700; margin-top: 2px; }
+
+  footer.foot { padding: 24px 0 8px; font-size: 12px; color: var(--text-muted); line-height: 1.7; }
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 900px) { .grid2 { grid-template-columns: 1fr; } }
+  @media (max-width: 700px) { .grid2 { grid-template-columns: 1fr; } }
   .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  @media (max-width: 900px) { .grid3 { grid-template-columns: 1fr; } }
+  @media (max-width: 700px) { .grid3 { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
 <div class="tooltip" id="tooltip"></div>
 
-<header class="top">
-  <div class="wrap">
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <p class="eyebrow">Meta Ads Dashboard</p>
+      <h1>THMALL 협력광고 성과</h1>
+      <p class="sub">act_885213872590921<br/>탑헬스 official · 기준일 2026-08-25</p>
+    </div>
     <button class="theme-toggle" id="themeToggle" type="button">🌙 다크모드</button>
-    <p class="eyebrow">Meta Ads Performance Dashboard</p>
-    <h1>THMALL 협력광고 성과 대시보드</h1>
-    <p class="sub">act_885213872590921 · 탑헬스 official · 분석 기준일 2026-08-25 · 지표는 "구매(공유 항목)" 기준</p>
-    <nav class="toc">
-      <a href="#summary">요약</a>
-      <a href="#trend">트렌드</a>
-      <a href="#campaign">캠페인</a>
-      <a href="#adset">애드셋</a>
-      <a href="#creative">소재</a>
-      <a href="#demo">인구통계</a>
-      <a href="#insight">인사이트</a>
+    <nav class="side-nav">
+      <a href="#summary"><span class="n">1</span>요약</a>
+      <a href="#trend"><span class="n">2</span>트렌드</a>
+      <a href="#campaign"><span class="n">3</span>캠페인</a>
+      <a href="#adset"><span class="n">4</span>애드셋</a>
+      <a href="#creative"><span class="n">5</span>소재</a>
+      <a href="#demo"><span class="n">6</span>인구통계</a>
+      <a href="#insight"><span class="n">7</span>인사이트</a>
+      <a href="#top5" class="top5-link"><span class="n">🏆</span>TOP5 소재</a>
     </nav>
-  </div>
-</header>
-
-<div class="wrap">
-
-  <section id="summary">
-    <h2>1 · 요약</h2>
-    <p class="desc">최근 30일(2026-07-26 ~ 2026-08-24), 구매 최적화 캠페인 기준 핵심 지표입니다. "공유 항목" 구매는 카탈로그 협력광고 특성상 파트너(네이버 등) 채널에서 발생한 구매까지 포함하는 Meta의 확장 귀속 지표입니다.</p>
-    <div class="kpi-grid">
-      <div class="kpi-card"><div class="label">총 지출</div><div class="value">₩32,126,746</div><div class="foot">구매 최적화 캠페인 10개 기준</div></div>
-      <div class="kpi-card"><div class="label">구매 (공유항목)</div><div class="value">3,512건</div><div class="foot">전월 대비 증가 추세</div></div>
-      <div class="kpi-card"><div class="label">전환값 (공유항목)</div><div class="value">₩161,097,826</div><div class="foot">평균 구매가 ≈ ₩45,868</div></div>
-      <div class="kpi-card"><div class="label">블렌디드 ROAS</div><div class="value accent-good">5.01</div><div class="foot">손익분기(1.0) 대비 +401%</div></div>
+    <div class="top5-mini">
+      <h4>🏆 TOP 5 소재 (ROAS)</h4>
+      <ol id="top5MiniList"></ol>
     </div>
-    <div class="kpi-grid" style="margin-top:12px;">
-      <div class="kpi-card"><div class="label">계정 전체 지출</div><div class="value">₩42,435,524</div><div class="foot">트래픽/혼합 캠페인 포함</div></div>
-      <div class="kpi-card"><div class="label">활성 캠페인</div><div class="value">13개</div><div class="foot">구매 10 · 트래픽 2 · 혼합 1</div></div>
-      <div class="kpi-card"><div class="label">활성 애드셋</div><div class="value">20개</div><div class="foot">상위 5개가 지출의 61%</div></div>
-      <div class="kpi-card"><div class="label">활성 소재</div><div class="value">94개</div><div class="foot">성과 있는 소재 60개(98.3% 지출)</div></div>
-    </div>
-  </section>
+  </aside>
 
-  <section id="trend">
-    <h2>2 · 트렌드 분석 — 월별 / 주별 / 일별</h2>
-    <p class="desc">구매 최적화 캠페인 17개(활성 10개 + 최근 지출 이력이 있는 일시중지 7개)를 합산했습니다. 지출(파랑)·구매(초록)·ROAS(주황)를 각각 단일 축 차트로 분리해 왜곡 없이 비교할 수 있게 했습니다.</p>
+  <main class="content">
+    <div class="content-inner">
 
-    <div class="card">
-      <h3>월별 추이 (2026-01 ~ 2026-08)</h3>
-      <p class="note">6월부터 예산이 급격히 확대되었고, ROAS는 3.5~6.1 구간에서 유지되고 있습니다.</p>
-      <div class="grid3">
-        <div><div id="mChartSpend"></div></div>
-        <div><div id="mChartPurch"></div></div>
-        <div><div id="mChartRoas"></div></div>
-      </div>
-      <details class="tv"><summary>데이터 테이블 보기</summary>
-        <div class="table-scroll"><table class="dtable" id="monthlyTable"></table></div>
-      </details>
-    </div>
+      <section id="summary">
+        <h2>1 · 요약</h2>
+        <p class="desc">최근 30일(2026-07-26 ~ 2026-08-24), 구매 최적화 캠페인 기준 핵심 지표입니다. "공유 항목" 구매는 카탈로그 협력광고 특성상 파트너(네이버 등) 채널에서 발생한 구매까지 포함하는 Meta의 확장 귀속 지표입니다.</p>
+        <div class="kpi-grid">
+          <div class="kpi-card"><div class="label">총 지출</div><div class="value">₩32,126,746</div><div class="foot">구매 최적화 캠페인 10개 기준</div></div>
+          <div class="kpi-card"><div class="label">구매 (공유항목)</div><div class="value">3,512건</div><div class="foot">전월 대비 증가 추세</div></div>
+          <div class="kpi-card"><div class="label">전환값 (공유항목)</div><div class="value">₩161,097,826</div><div class="foot">평균 구매가 ≈ ₩45,868</div></div>
+          <div class="kpi-card"><div class="label">블렌디드 ROAS</div><div class="value accent-good">5.01</div><div class="foot">손익분기(1.0) 대비 +401%</div></div>
+        </div>
+        <div class="kpi-grid" style="margin-top:12px;">
+          <div class="kpi-card"><div class="label">계정 전체 지출</div><div class="value">₩42,435,524</div><div class="foot">트래픽/혼합 캠페인 포함</div></div>
+          <div class="kpi-card"><div class="label">활성 캠페인</div><div class="value">13개</div><div class="foot">구매 10 · 트래픽 2 · 혼합 1</div></div>
+          <div class="kpi-card"><div class="label">활성 애드셋</div><div class="value">20개</div><div class="foot">상위 5개가 지출의 61%</div></div>
+          <div class="kpi-card"><div class="label">활성 소재</div><div class="value">94개</div><div class="foot">성과 있는 소재 60개(98.3% 지출)</div></div>
+        </div>
+      </section>
 
-    <div class="card">
-      <h3>주별 추이 (최근 13주)</h3>
-      <p class="note">7/15~7/21 주간이 ROAS 최저(2.57), 7/29~8/11 구간이 최고 효율(5.1~5.3)이었습니다.</p>
-      <div class="grid3">
-        <div><div id="wChartSpend"></div></div>
-        <div><div id="wChartPurch"></div></div>
-        <div><div id="wChartRoas"></div></div>
-      </div>
-      <details class="tv"><summary>데이터 테이블 보기</summary>
-        <div class="table-scroll"><table class="dtable" id="weeklyTable"></table></div>
-      </details>
-    </div>
+      <section id="trend">
+        <div class="section-head">
+          <div>
+            <h2>2 · 트렌드 분석</h2>
+            <p class="desc">구매 최적화 캠페인 17개(활성 10개 + 최근 지출 이력이 있는 일시중지 7개) 합산. 지출(파랑)·구매(초록)·ROAS(주황)를 각각 단일 축 차트로 분리했습니다. 드롭다운으로 기간 단위를 바꿔보세요.</p>
+          </div>
+          <div class="select-wrap">
+            <select id="trendRange" class="range-select">
+              <option value="daily">일별</option>
+              <option value="weekly">주별</option>
+              <option value="monthly" selected>월별</option>
+              <option value="yearly">연도별</option>
+            </select>
+            <span class="arrow">▾</span>
+          </div>
+        </div>
 
-    <div class="card">
-      <h3>일별 추이 (최근 30일)</h3>
-      <p class="note">8/2(ROAS 6.88)·8/5(6.73)·8/10(6.01)이 최고 효율일, 8/14·8/22·8/23이 최저 효율일이었습니다.</p>
-      <div id="dChartSpend" style="margin-bottom:8px;"></div>
-      <div id="dChartRoas"></div>
-      <details class="tv"><summary>데이터 테이블 보기</summary>
-        <div class="table-scroll"><table class="dtable" id="dailyTable"></table></div>
-      </details>
-    </div>
-  </section>
+        <div class="card">
+          <h3 id="trendTitle">월별 추이</h3>
+          <p class="note" id="trendNote"></p>
+          <div class="grid3">
+            <div><div id="tChartSpend"></div></div>
+            <div><div id="tChartPurch"></div></div>
+            <div><div id="tChartRoas"></div></div>
+          </div>
+          <details class="tv"><summary>데이터 테이블 보기</summary>
+            <div class="table-scroll"><table class="dtable" id="trendTable"></table></div>
+          </details>
+        </div>
+      </section>
 
-  <section id="campaign">
-    <h2>3 · 캠페인별 성과</h2>
-    <p class="desc">최근 30일 활성 캠페인의 ROAS(공유항목) 기준입니다. 초록은 ROAS≥1(수익), 빨강은 ROAS&lt;1(손실), 회색은 구매 지표를 산출할 수 없는 트래픽/혼합 목적 캠페인입니다.</p>
-    <div class="card">
-      <div class="legend">
-        <span class="item"><span class="swatch" style="background:var(--status-good)"></span>ROAS ≥ 1 (수익)</span>
-        <span class="item"><span class="swatch" style="background:var(--status-critical)"></span>ROAS &lt; 1 (손실)</span>
-        <span class="item"><span class="swatch" style="background:var(--status-muted)"></span>측정 불가(트래픽/혼합)</span>
-      </div>
-      <div id="campaignChart"></div>
-      <details class="tv" open><summary>데이터 테이블 보기</summary>
-        <div class="table-scroll"><table class="dtable" id="campaignTable"></table></div>
-      </details>
-    </div>
-  </section>
+      <section id="campaign">
+        <h2>3 · 캠페인별 성과</h2>
+        <p class="desc">최근 30일 활성 캠페인의 ROAS(공유항목) 기준입니다. 초록은 ROAS≥1(수익), 빨강은 ROAS&lt;1(손실), 회색은 구매 지표를 산출할 수 없는 트래픽/혼합 목적 캠페인입니다.</p>
+        <div class="card">
+          <div class="legend">
+            <span class="item"><span class="swatch" style="background:var(--status-good)"></span>ROAS ≥ 1 (수익)</span>
+            <span class="item"><span class="swatch" style="background:var(--status-critical)"></span>ROAS &lt; 1 (손실)</span>
+            <span class="item"><span class="swatch" style="background:var(--status-muted)"></span>측정 불가(트래픽/혼합)</span>
+          </div>
+          <div id="campaignChart"></div>
+          <details class="tv" open><summary>데이터 테이블 보기</summary>
+            <div class="table-scroll"><table class="dtable" id="campaignTable"></table></div>
+          </details>
+        </div>
+      </section>
 
-  <section id="adset">
-    <h2>4 · 애드셋별 성과</h2>
-    <p class="desc">지출 상위 20개 활성 애드셋입니다. 파트너십 계열 애드셋이 상위권에 다수 포진해 있습니다.</p>
-    <div class="card">
-      <div class="legend">
-        <span class="item"><span class="swatch" style="background:var(--status-good)"></span>ROAS ≥ 1</span>
-        <span class="item"><span class="swatch" style="background:var(--status-critical)"></span>ROAS &lt; 1</span>
-        <span class="item"><span class="swatch" style="background:var(--status-muted)"></span>측정 불가</span>
-      </div>
-      <div id="adsetChart"></div>
-      <details class="tv"><summary>데이터 테이블 보기</summary>
-        <div class="table-scroll"><table class="dtable" id="adsetTable"></table></div>
-      </details>
-    </div>
-  </section>
+      <section id="adset">
+        <h2>4 · 애드셋별 성과</h2>
+        <p class="desc">지출 상위 20개 활성 애드셋입니다. 파트너십 계열 애드셋이 상위권에 다수 포진해 있습니다.</p>
+        <div class="card">
+          <div class="legend">
+            <span class="item"><span class="swatch" style="background:var(--status-good)"></span>ROAS ≥ 1</span>
+            <span class="item"><span class="swatch" style="background:var(--status-critical)"></span>ROAS &lt; 1</span>
+            <span class="item"><span class="swatch" style="background:var(--status-muted)"></span>측정 불가</span>
+          </div>
+          <div id="adsetChart"></div>
+          <details class="tv"><summary>데이터 테이블 보기</summary>
+            <div class="table-scroll"><table class="dtable" id="adsetTable"></table></div>
+          </details>
+        </div>
+      </section>
 
-  <section id="creative">
-    <h2>5 · 소재(광고)별 성과 — 성과 있는 소재 vs 없는 소재</h2>
-    <p class="desc">활성 소재 94개, 지출 합계 ₩28,232,927 기준 분류입니다.</p>
-    <div class="card">
-      <h3>지출 비중</h3>
-      <div id="creativeShare"></div>
-    </div>
-    <div class="card">
-      <h3>성과 상위 소재 TOP 15 (지출 기준)</h3>
-      <div class="table-scroll"><table class="dtable" id="topCreativeTable"></table></div>
-    </div>
-    <div class="card">
-      <h3>성과 낮은 / 전환 없는 소재</h3>
-      <p class="note">ROAS&lt;1(손실) 2건 + 지출은 있으나 구매 0건인 소재 중 상위 7건입니다.</p>
-      <div class="table-scroll"><table class="dtable" id="badCreativeTable"></table></div>
-    </div>
-  </section>
+      <section id="creative">
+        <h2>5 · 소재(광고)별 성과 — 성과 있는 소재 vs 없는 소재</h2>
+        <p class="desc">활성 소재 94개, 지출 합계 ₩28,232,927 기준 분류입니다.</p>
+        <div class="card">
+          <h3>지출 비중</h3>
+          <div id="creativeShare"></div>
+        </div>
+        <div class="card">
+          <h3>성과 상위 소재 TOP 15 (지출 기준)</h3>
+          <div class="table-scroll"><table class="dtable" id="topCreativeTable"></table></div>
+        </div>
+        <div class="card">
+          <h3>성과 낮은 / 전환 없는 소재</h3>
+          <p class="note">ROAS&lt;1(손실) 2건 + 지출은 있으나 구매 0건인 소재 중 상위 7건입니다.</p>
+          <div class="table-scroll"><table class="dtable" id="badCreativeTable"></table></div>
+        </div>
+      </section>
 
-  <section id="demo">
-    <h2>6 · 인구통계 분석 — 연령 / 성별 / 기기</h2>
-    <p class="desc">⚠️ Meta API는 "구매(공유항목)"을 연령·성별·기기 단위로 분리 제공하지 않습니다. 아래 차트는 정확한 실측치인 지출·노출·클릭·CTR 기준이며, 구매/ROAS는 표본이 극히 작은 표준 픽셀 구매(참고용)로 하단 표에만 별도 표기했습니다.</p>
-    <div class="grid2">
-      <div class="card">
-        <h3>연령대별 지출</h3>
-        <div id="ageChart"></div>
-      </div>
-      <div class="card">
-        <h3>성별 지출</h3>
-        <div id="genderChart"></div>
-      </div>
+      <section id="demo">
+        <h2>6 · 인구통계 분석 — 연령 / 성별 / 기기</h2>
+        <p class="desc">⚠️ Meta API는 "구매(공유항목)"을 연령·성별·기기 단위로 분리 제공하지 않습니다. 아래 차트는 정확한 실측치인 지출·노출·클릭·CTR 기준이며, 구매/ROAS는 표본이 극히 작은 표준 픽셀 구매(참고용)로 하단 표에만 별도 표기했습니다.</p>
+        <div class="grid2">
+          <div class="card">
+            <h3>연령대별 지출</h3>
+            <div id="ageChart"></div>
+          </div>
+          <div class="card">
+            <h3>성별 지출</h3>
+            <div id="genderChart"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>기기별 지출</h3>
+          <div id="deviceChart"></div>
+        </div>
+        <details class="tv"><summary>인구통계 데이터 테이블 보기 (참고용 구매 수치 포함)</summary>
+          <div class="table-scroll"><table class="dtable" id="ageTable" style="margin-bottom:18px;"></table></div>
+          <div class="table-scroll"><table class="dtable" id="genderTable" style="margin-bottom:18px;"></table></div>
+          <div class="table-scroll"><table class="dtable" id="deviceTable"></table></div>
+        </details>
+      </section>
+
+      <section id="insight">
+        <h2>7 · 종합 인사이트 및 제안</h2>
+        <ul class="insight-list">
+          <li><span class="num">1</span><span><b>파트너십 소재군이 최고 효율</b> — "partnership_snow", "HEMOKIDS", "HemoQueens" 계열 소재들이 ROAS 7~11로 압도적으로 우수합니다. 예산 우선 배분 대상입니다.</span></li>
+          <li><span class="num">2</span><span><b>닥터라인 성인 라인은 부진</b> — "헤모씨 다이렉트", "헤모퀸즈 플러스"(성인) 소재 다수가 ROAS 1 미만이거나 전환이 없습니다. 소재 리프레시 또는 예산 축소가 필요합니다.</span></li>
+          <li><span class="num">3</span><span><b>신제품(헤모키즈100만병)은 관망 필요</b> — ROAS 1.5~1.7 수준으로 아직 학습 단계입니다. 2~3주 더 지켜본 뒤 확대 여부를 판단하는 것을 권장합니다.</span></li>
+          <li><span class="num">4</span><span><b>예산 확장에 따른 효율 조정은 정상 범위</b> — 6~8월 지출이 8배 가까이 늘었음에도 ROAS가 3.4~5대에서 유지되고 있어 전반적으로 건강한 확장입니다. 다만 8월 중순 이후 변동성이 커지고 있어 모니터링이 필요합니다.</span></li>
+          <li><span class="num">5</span><span><b>인구통계 확장 여지</b> — 45세 이상, 남성, 안드로이드 사용자의 CTR이 오히려 더 높게 나타나 별도 타겟 테스트를 고려할 만합니다(구매 전환은 별도 검증 필요).</span></li>
+        </ul>
+      </section>
+
+      <section id="top5">
+        <h2>8 · TOP 5 소재 — 성과가 가장 좋은 소재</h2>
+        <p class="desc">활성 소재 중 ROAS(공유항목) 기준 상위 5개입니다. 다음 예산 증액 시 가장 먼저 늘려야 할 소재들입니다.</p>
+        <div class="top5-grid" id="top5Grid"></div>
+      </section>
+
+      <footer class="foot">
+        <p><b>방법론</b> · 데이터 출처: Meta Marketing API(Ads MCP), 조회 시각 2026-08-25. "공유항목 구매/전환값/ROAS"는 <code>catalog_segment_actions:omni_purchase</code> / <code>catalog_segment_value:omni_purchase</code> 인디케이터 기준입니다. 캠페인·애드셋·소재 표는 최근 30일(2026-07-26~2026-08-24) 활성 기준, 트렌드는 구매 최적화 캠페인 17개 합산이며 연도별 합계는 2026년 1~8월 부분 데이터입니다. 통화 단위 KRW. 이 보고서는 Meta Ads MCP를 통해 자동 수집·집계되었습니다.</p>
+      </footer>
+
     </div>
-    <div class="card">
-      <h3>기기별 지출</h3>
-      <div id="deviceChart"></div>
-    </div>
-    <details class="tv"><summary>인구통계 데이터 테이블 보기 (참고용 구매 수치 포함)</summary>
-      <div class="table-scroll"><table class="dtable" id="ageTable" style="margin-bottom:18px;"></table></div>
-      <div class="table-scroll"><table class="dtable" id="genderTable" style="margin-bottom:18px;"></table></div>
-      <div class="table-scroll"><table class="dtable" id="deviceTable"></table></div>
-    </details>
-  </section>
-
-  <section id="insight">
-    <h2>7 · 종합 인사이트 및 제안</h2>
-    <ul class="insight-list">
-      <li><span class="num">1</span><span><b>파트너십 소재군이 최고 효율</b> — "partnership_snow", "HEMOKIDS", "HemoQueens" 계열 소재들이 ROAS 7~11로 압도적으로 우수합니다. 예산 우선 배분 대상입니다.</span></li>
-      <li><span class="num">2</span><span><b>닥터라인 성인 라인은 부진</b> — "헤모씨 다이렉트", "헤모퀸즈 플러스"(성인) 소재 다수가 ROAS 1 미만이거나 전환이 없습니다. 소재 리프레시 또는 예산 축소가 필요합니다.</span></li>
-      <li><span class="num">3</span><span><b>신제품(헤모키즈100만병)은 관망 필요</b> — ROAS 1.5~1.7 수준으로 아직 학습 단계입니다. 2~3주 더 지켜본 뒤 확대 여부를 판단하는 것을 권장합니다.</span></li>
-      <li><span class="num">4</span><span><b>예산 확장에 따른 효율 조정은 정상 범위</b> — 6~8월 지출이 8배 가까이 늘었음에도 ROAS가 3.4~5대에서 유지되고 있어 전반적으로 건강한 확장입니다. 다만 8월 중순 이후 변동성이 커지고 있어 모니터링이 필요합니다.</span></li>
-      <li><span class="num">5</span><span><b>인구통계 확장 여지</b> — 45세 이상, 남성, 안드로이드 사용자의 CTR이 오히려 더 높게 나타나 별도 타겟 테스트를 고려할 만합니다(구매 전환은 별도 검증 필요).</span></li>
-    </ul>
-  </section>
-
-  <footer class="foot">
-    <p><b>방법론</b> · 데이터 출처: Meta Marketing API(Ads MCP), 조회 시각 2026-08-25. "공유항목 구매/전환값/ROAS"는 <code>catalog_segment_actions:omni_purchase</code> / <code>catalog_segment_value:omni_purchase</code> 인디케이터 기준입니다. 캠페인·애드셋·소재 표는 최근 30일(2026-07-26~2026-08-24) 활성 기준, 트렌드는 구매 최적화 캠페인 17개 합산, 월별은 2026년 1월부터의 데이터입니다. 통화 단위 KRW. 이 보고서는 Meta Ads MCP를 통해 자동 수집·집계되었습니다.</p>
-  </footer>
-
+  </main>
 </div>
 
 <script>
@@ -454,6 +513,8 @@ const daily = [
  {k:'08-23',spend:1960079,purch:109,value:5613646,roas:2.86},
  {k:'08-24',spend:1960351,purch:177,value:8012618,roas:4.09},
 ];
+
+// yearly is derived from monthly at render time (see YEARLY below)
 
 const campaigns = [
   {name:'파트너십_상품랜딩_전환_비포락토', spend:1904007, purch:181, value:14302328, roas:7.51},
@@ -550,7 +611,6 @@ const deviceData = [
 /* ============================= HELPERS ============================= */
 const fmtWon = n => '₩' + Math.round(n).toLocaleString('ko-KR');
 const fmtNum = n => Math.round(n).toLocaleString('ko-KR');
-const fmtRoas = n => (n===null || n===undefined) ? '—' : n.toFixed(2);
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 
 const tooltipEl = document.getElementById('tooltip');
@@ -575,7 +635,6 @@ function renderBarV(elId, labels, values, opts) {
   const gap = 6;
   const barW = Math.min(28, (plotW / n) - gap);
   let svg = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="chart">`;
-  // gridlines (3)
   for (let i=0;i<=2;i++) {
     const y = padT + plotH - (plotH * i/2);
     svg += `<line class="gridline" x1="${padL}" x2="${W-padR}" y1="${y}" y2="${y}" />`;
@@ -587,7 +646,6 @@ function renderBarV(elId, labels, values, opts) {
     const x = padL + i*step + (step - barW)/2;
     const y = padT + plotH - bh;
     svg += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${bh.toFixed(1)}" rx="4" ry="4" fill="${color}" class="bar" data-i="${i}" style="cursor:pointer" />`;
-    // sparse labels: first, last, max
     const showLabel = (i===0 || i===n-1 || v===Math.max(...values));
     if (opts.showLabels !== false && showLabel) {
       svg += `<text class="bar-label" x="${(x+barW/2).toFixed(1)}" y="${(y-5).toFixed(1)}" text-anchor="middle">${fmt(v)}</text>`;
@@ -640,9 +698,7 @@ function renderLine(elId, labels, values, opts) {
     const r = isEnd ? 4.5 : 3;
     svg += `<circle cx="${xFor(i).toFixed(1)}" cy="${yFor(v).toFixed(1)}" r="${r}" fill="${color}" stroke="${css('--surface-1')}" stroke-width="2" class="dot" data-i="${i}" style="cursor:pointer" />`;
   });
-  // end label
-  svg += `<text class="bar-label" x="${(xFor(n-1)+6).toFixed(1)}" y="${(yFor(values[n-1])+4).toFixed(1)}" text-anchor="start" fill="${color}" style="fill:${color}">${fmt(values[n-1])}</text>`;
-  // x labels: show all when few points, else sparse
+  svg += `<text class="bar-label" x="${(xFor(n-1)+6).toFixed(1)}" y="${(yFor(values[n-1])+4).toFixed(1)}" text-anchor="start" style="fill:${color}">${fmt(values[n-1])}</text>`;
   const lblStep = n <= 14 ? 1 : Math.ceil(n/10);
   labels.forEach((lb,i)=>{
     if (i===0 || i===n-1 || i % lblStep === 0) {
@@ -664,7 +720,6 @@ function renderLine(elId, labels, values, opts) {
 /* ---- Horizontal ranked bar chart (status colored) ---- */
 function renderRankBar(elId, items, opts) {
   opts = opts || {};
-  const fmtSpend = opts.fmtSpend || fmtWon;
   const W = opts.w || 1100;
   const rowH = 26, gap = 6;
   const padL = 4, padR = 60, padT = 4, padB = 4;
@@ -743,27 +798,72 @@ function fillTable(id, headers, rows) {
   el.innerHTML = html;
 }
 
+/* ============================= TREND (dropdown-driven) ============================= */
+const YEARLY = (() => {
+  const map = {};
+  monthly.forEach(d => {
+    const y = d.k.slice(0,4);
+    if (!map[y]) map[y] = {k:y, spend:0, purch:0, value:0};
+    map[y].spend += d.spend; map[y].purch += d.purch; map[y].value += d.value;
+  });
+  return Object.values(map).map(d => ({...d, roas: d.value / d.spend}));
+})();
+
+const TREND_SETS = {
+  daily:   { data: daily,   title: '일별 추이 (최근 30일)',
+             note: '8/2(ROAS 6.88)·8/5(6.73)·8/10(6.01)이 최고 효율일, 8/14·8/22·8/23이 최저 효율일이었습니다.',
+             label: d => d.k, colLabel: '날짜' },
+  weekly:  { data: weekly,  title: '주별 추이 (최근 13주)',
+             note: '7/15~7/21 주간이 ROAS 최저(2.57), 7/29~8/11 구간이 최고 효율(5.1~5.3)이었습니다.',
+             label: d => d.k.split('-')[0], colLabel: '주간' },
+  monthly: { data: monthly, title: '월별 추이 (2026-01 ~ 2026-08)',
+             note: '6월부터 예산이 급격히 확대되었고, ROAS는 3.5~6.1 구간에서 유지되고 있습니다.',
+             label: d => d.k, colLabel: '월' },
+  yearly:  { data: YEARLY,  title: '연도별 추이',
+             note: '2026년은 1~8월 부분 데이터입니다. 향후 연도가 누적되면 연간 비교가 가능해집니다.',
+             label: d => d.k + '년', colLabel: '연도' },
+};
+
+function renderTrend(range) {
+  const cfg = TREND_SETS[range];
+  const d = cfg.data;
+  const labels = d.map(cfg.label);
+  document.getElementById('trendTitle').textContent = cfg.title;
+  document.getElementById('trendNote').textContent = cfg.note;
+  renderBarV('tChartSpend', labels, d.map(x=>x.spend), {color:css('--series-1'), fmt:fmtWon, tipLabel:'지출'});
+  renderBarV('tChartPurch', labels, d.map(x=>x.purch), {color:css('--series-3'), fmt:v=>fmtNum(v)+'건', tipLabel:'구매'});
+  renderLine('tChartRoas', labels, d.map(x=>x.roas), {color:css('--series-2'), fmt:v=>v.toFixed(2), tipLabel:'ROAS'});
+  fillTable('trendTable', [cfg.colLabel, '지출', '구매', '전환값', 'ROAS'],
+    d.map(x=>[cfg.label(x), fmtWon(x.spend), fmtNum(x.purch)+'건', fmtWon(x.value), x.roas.toFixed(2)]));
+}
+
+/* ============================= TOP 5 소재 ============================= */
+const TOP5 = [...topCreatives].sort((a,b)=>b.roas-a.roas).slice(0,5);
+const MEDALS = ['🥇','🥈','🥉','🎖️','🎖️'];
+
+function renderTop5() {
+  const grid = document.getElementById('top5Grid');
+  grid.innerHTML = TOP5.map((d,i)=>`
+    <div class="top5-card">
+      <div class="rank-badge">#${i+1}</div>
+      <div class="medal">${MEDALS[i]}</div>
+      <div class="roas-big">${d.roas.toFixed(2)}<span class="u"> ROAS</span></div>
+      <div class="name" title="${d.name}">${d.name}</div>
+      <div class="stats">
+        <div>지출<b>${fmtWon(d.spend)}</b></div>
+        <div>구매<b>${fmtNum(d.purch)}건</b></div>
+      </div>
+    </div>`).join('');
+
+  const mini = document.getElementById('top5MiniList');
+  mini.innerHTML = TOP5.map((d,i)=>`
+    <li><span class="rank">${i+1}</span><span class="name" title="${d.name}">${d.name}</span><span class="roas">${d.roas.toFixed(2)}</span></li>
+  `).join('');
+}
+
 /* ============================= RENDER ============================= */
 function renderAll() {
-  // monthly
-  renderBarV('mChartSpend', monthly.map(d=>d.k), monthly.map(d=>d.spend), {color:css('--series-1'), fmt:fmtWon, tipLabel:'지출'});
-  renderBarV('mChartPurch', monthly.map(d=>d.k), monthly.map(d=>d.purch), {color:css('--series-3'), fmt:v=>fmtNum(v)+'건', tipLabel:'구매'});
-  renderLine('mChartRoas', monthly.map(d=>d.k), monthly.map(d=>d.roas), {color:css('--series-2'), fmt:v=>v.toFixed(2), tipLabel:'ROAS'});
-  fillTable('monthlyTable', ['월','지출','구매','전환값','ROAS'],
-    monthly.map(d=>[d.k, fmtWon(d.spend), fmtNum(d.purch)+'건', fmtWon(d.value), d.roas.toFixed(2)]));
-
-  // weekly
-  renderBarV('wChartSpend', weekly.map(d=>d.k.split('-')[0]), weekly.map(d=>d.spend), {color:css('--series-1'), fmt:fmtWon, tipLabel:'지출'});
-  renderBarV('wChartPurch', weekly.map(d=>d.k.split('-')[0]), weekly.map(d=>d.purch), {color:css('--series-3'), fmt:v=>fmtNum(v)+'건', tipLabel:'구매'});
-  renderLine('wChartRoas', weekly.map(d=>d.k.split('-')[0]), weekly.map(d=>d.roas), {color:css('--series-2'), fmt:v=>v.toFixed(2), tipLabel:'ROAS'});
-  fillTable('weeklyTable', ['주간','지출','구매','전환값','ROAS'],
-    weekly.map(d=>[d.k, fmtWon(d.spend), fmtNum(d.purch)+'건', fmtWon(d.value), d.roas.toFixed(2)]));
-
-  // daily
-  renderBarV('dChartSpend', daily.map(d=>d.k), daily.map(d=>d.spend), {w:1100, h:160, color:css('--series-1'), fmt:fmtWon, tipLabel:'지출', showLabels:false});
-  renderLine('dChartRoas', daily.map(d=>d.k), daily.map(d=>d.roas), {w:1100, h:160, color:css('--series-2'), fmt:v=>v.toFixed(2), tipLabel:'ROAS'});
-  fillTable('dailyTable', ['날짜','지출','구매','전환값','ROAS'],
-    daily.map(d=>[d.k, fmtWon(d.spend), fmtNum(d.purch)+'건', fmtWon(d.value), d.roas.toFixed(2)]));
+  renderTrend(document.getElementById('trendRange').value);
 
   // campaign
   const campSorted = [...campaigns].sort((a,b)=>b.spend-a.spend);
@@ -792,20 +892,21 @@ function renderAll() {
       return [d.name, fmtWon(d.spend), fmtNum(d.purch)+'건', fmtWon(d.value), roasTxt, `<span class="badge ${badgeClass}">${d.tag}</span>`];
     }));
 
-  // age
+  // demographics
   renderBarV('ageChart', ageData.map(d=>d.k), ageData.map(d=>d.spend), {w:520, h:190, color:css('--series-1'), fmt:fmtWon, tipLabel:'지출'});
-  // gender
   renderBarV('genderChart', genderData.map(d=>d.k), genderData.map(d=>d.spend), {w:520, h:190, color:css('--series-1'), fmt:fmtWon, tipLabel:'지출'});
-  // device
   renderBarV('deviceChart', deviceData.map(d=>d.k), deviceData.map(d=>d.spend), {w:1100, h:180, color:css('--series-1'), fmt:fmtWon, tipLabel:'지출'});
-
   fillTable('ageTable', ['연령대','지출','노출','클릭','CTR','구매(참고)','ROAS(참고)'],
     ageData.map(d=>[d.k, fmtWon(d.spend), fmtNum(d.impr), fmtNum(d.clicks), d.ctr, d.purch+'건', d.roas===null?'—':d.roas.toFixed(3)]));
   fillTable('genderTable', ['성별','지출','노출','클릭','CTR','구매(참고)'],
     genderData.map(d=>[d.k, fmtWon(d.spend), fmtNum(d.impr), fmtNum(d.clicks), d.ctr, d.purch+'건']));
   fillTable('deviceTable', ['기기','지출','노출','클릭','CTR'],
     deviceData.map(d=>[d.k, fmtWon(d.spend), fmtNum(d.impr), fmtNum(d.clicks), d.ctr]));
+
+  renderTop5();
 }
+
+document.getElementById('trendRange').addEventListener('change', (e) => renderTrend(e.target.value));
 
 renderAll();
 
