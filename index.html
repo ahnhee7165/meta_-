@@ -90,61 +90,74 @@
   .app-shell { display: flex; align-items: flex-start; min-height: 100vh; }
 
   .sidebar {
-    width: 248px; flex: none;
+    width: 252px; flex: none;
     background: var(--surface-1); border-right: 1px solid var(--border);
     position: sticky; top: 0; height: 100vh; overflow-y: auto;
-    padding: 22px 16px 16px; display: flex; flex-direction: column; gap: 18px;
+    padding: 24px 16px 16px; display: flex; flex-direction: column; gap: 18px;
   }
+  .sidebar .brand { display: flex; align-items: flex-start; gap: 10px; }
   .sidebar .brand .eyebrow {
-    font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
-    color: var(--text-muted); margin: 0 0 6px;
+    font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--text-muted); margin: 0 0 4px;
   }
-  .sidebar .brand h1 { font-size: 17px; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.01em; line-height: 1.3; }
-  .sidebar .brand .sub { font-size: 11.5px; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+  .sidebar .brand h1 { font-size: 16.5px; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.01em; line-height: 1.28; }
+  .sidebar .brand .sub { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+
+  .partner-strip {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    background: #ffffff; border: 1px solid var(--border); border-radius: 12px;
+    padding: 12px 10px;
+  }
+  .partner-logo { height: 20px; width: auto; display: block; }
+  .partner-logo-lp { height: 26px; }
+  .partner-x { color: #c7c6c1; font-size: 12px; font-weight: 700; }
 
   .theme-toggle {
     border: 1px solid var(--border); background: var(--surface-2);
     color: var(--text-secondary); font-size: 12px; font-weight: 700;
     padding: 8px 12px; border-radius: 999px; cursor: pointer; width: 100%;
+    transition: color .15s ease, background .15s ease, transform .1s ease;
   }
-  .theme-toggle:hover { color: var(--text-primary); }
+  .theme-toggle:hover { color: var(--text-primary); background: color-mix(in srgb, var(--series-1) 10%, var(--surface-2)); }
+  .theme-toggle:active { transform: scale(.97); }
 
   nav.side-nav { display: flex; flex-direction: column; gap: 2px; }
   nav.side-nav a {
     font-size: 13.5px; font-weight: 700; color: var(--text-secondary);
-    text-decoration: none; padding: 9px 10px; border-radius: 8px;
+    text-decoration: none; padding: 9px 10px; border-radius: 9px;
     display: flex; align-items: center; gap: 9px; cursor: pointer;
-    border: 1px solid transparent;
+    border: 1px solid transparent; transition: background .12s ease, color .12s ease, transform .08s ease;
   }
   nav.side-nav a .n {
     width: 20px; height: 20px; border-radius: 6px; background: var(--surface-2);
     color: var(--text-muted); font-size: 10.5px; font-weight: 800;
     display: flex; align-items: center; justify-content: center; flex: none;
+    transition: background .15s ease, color .15s ease;
   }
-  nav.side-nav a:hover { background: var(--surface-2); color: var(--text-primary); }
-  nav.side-nav a.active { background: var(--surface-2); color: var(--text-primary); border-color: var(--border); }
-  nav.side-nav a.active .n { background: var(--series-1); color: #fff; }
+  nav.side-nav a:hover { background: var(--surface-2); color: var(--text-primary); transform: translateX(1px); }
+  nav.side-nav a.active { background: color-mix(in srgb, var(--series-1) 10%, var(--surface-2)); color: var(--text-primary); border-color: var(--border); }
+  nav.side-nav a.active .n { background: var(--series-1); color: #fff; box-shadow: 0 2px 6px -1px color-mix(in srgb, var(--series-1) 70%, transparent); }
   nav.side-nav a.top5-link { color: var(--status-good); }
   nav.side-nav a.top5-link .n { background: color-mix(in srgb, var(--status-good) 18%, transparent); color: var(--status-good); }
   nav.side-nav a.top5-link.active .n { background: var(--status-good); color: #fff; }
 
   .top5-mini { margin-top: auto; border-top: 1px solid var(--border); padding-top: 14px; }
   .top5-mini h4 {
-    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em;
+    font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em;
     color: var(--text-muted); margin: 0 0 10px; display: flex; align-items: center; gap: 6px;
   }
   .top5-mini ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
   .top5-mini li { display: flex; align-items: center; gap: 8px; }
   .top5-mini .rank {
     width: 18px; height: 18px; border-radius: 5px; background: var(--surface-2);
-    font-weight: 800; font-size: 10px; color: var(--text-secondary);
+    font-weight: 800; font-size: 11px; color: var(--text-secondary);
     display: flex; align-items: center; justify-content: center; flex: none;
   }
   .top5-mini .name {
-    flex: 1; min-width: 0; font-size: 11.5px; color: var(--text-secondary);
+    flex: 1; min-width: 0; font-size: 12.5px; color: var(--text-secondary);
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-  .top5-mini .roas { font-weight: 800; color: var(--status-good); font-size: 11.5px; flex: none; }
+  .top5-mini .roas { font-weight: 800; color: var(--status-good); font-size: 12.5px; flex: none; }
 
   .content { flex: 1; min-width: 0; }
   .content-inner { max-width: 980px; margin: 0 auto; padding: 30px 32px 70px; }
@@ -160,9 +173,14 @@
 
   /* ---------- page switching ---------- */
   .page { display: none; padding: 4px 0 30px; }
-  .page.active { display: block; }
+  .page.active { display: block; animation: pageIn .28s ease; }
+  @keyframes pageIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
   .page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 4px; }
-  .page h2 { font-size: 19px; font-weight: 800; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .page h2 { font-size: 19px; font-weight: 800; margin: 0 0 4px; letter-spacing: -0.01em; position: relative; padding-left: 12px; }
+  .page h2::before {
+    content: ''; position: absolute; left: 0; top: 3px; bottom: 3px; width: 4px; border-radius: 3px;
+    background: linear-gradient(180deg, var(--series-1), var(--series-3));
+  }
   .page p.desc { font-size: 13.5px; color: var(--text-secondary); margin: 0 0 20px; max-width: 640px; line-height: 1.55; }
 
   section.block { padding: 22px 0; border-top: 1px solid var(--border); }
@@ -183,33 +201,78 @@
     pointer-events: none; color: var(--text-muted); font-size: 11px;
   }
 
+  /* date-range picker */
+  .date-range-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex: none; margin-bottom: 20px; }
+  .date-inputs { display: flex; align-items: center; gap: 8px; }
+  .date-input {
+    appearance: none; -webkit-appearance: none;
+    background: var(--surface-1); border: 1px solid var(--border); color: var(--text-primary);
+    font-family: inherit; font-weight: 700; font-size: 13.5px;
+    padding: 8px 10px; border-radius: 9px; cursor: pointer;
+    color-scheme: light dark;
+  }
+  .date-input:hover { border-color: color-mix(in srgb, var(--series-1) 40%, var(--border)); }
+  .date-input:focus { outline: 2px solid var(--series-1); outline-offset: 1px; }
+  .date-sep { color: var(--text-muted); font-size: 13px; font-weight: 700; }
+  .chip-row { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; max-width: 340px; }
+  .chip {
+    appearance: none; border: 1px solid var(--border); background: var(--surface-2);
+    color: var(--text-secondary); font-family: inherit; font-weight: 700; font-size: 12.5px;
+    padding: 7px 12px; border-radius: 999px; cursor: pointer;
+    transition: background .12s ease, color .12s ease, border-color .12s ease, transform .08s ease;
+  }
+  .chip:hover { color: var(--text-primary); border-color: color-mix(in srgb, var(--series-1) 35%, var(--border)); }
+  .chip:active { transform: scale(.96); }
+  .chip.active { background: var(--series-1); border-color: var(--series-1); color: #fff; }
+  @media (max-width: 760px) {
+    .date-range-wrap { align-items: flex-start; width: 100%; }
+    .chip-row { justify-content: flex-start; max-width: none; }
+  }
+
   .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
   @media (max-width: 700px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
-  .kpi-card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
-  .kpi-card .label { font-size: 12.5px; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; }
+  .kpi-card {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px;
+    padding: 16px 18px; position: relative; overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+  }
+  .kpi-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(180deg, var(--series-1), var(--series-3)); opacity: .75;
+  }
+  .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -10px rgba(0,0,0,0.16); border-color: color-mix(in srgb, var(--series-1) 25%, var(--border)); }
+  .kpi-card .label { font-size: 13px; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; }
   .kpi-card .value { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
   .kpi-card .value.accent-good { color: var(--status-good); }
   .kpi-card .value.accent-critical { color: var(--status-critical); }
-  .kpi-card .foot { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+  .kpi-card .foot { font-size: 12.5px; color: var(--text-secondary); margin-top: 4px; }
 
-  .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px 14px; margin-bottom: 16px; }
+  .card {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px;
+    padding: 18px 20px 14px; margin-bottom: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    transition: box-shadow .18s ease, border-color .18s ease;
+  }
+  .card:hover { box-shadow: 0 8px 20px -12px rgba(0,0,0,0.14); }
   .card h3 { font-size: 14px; font-weight: 700; margin: 0 0 2px; }
-  .card p.note { font-size: 12px; color: var(--text-muted); margin: 0 0 10px; }
+  .card p.note { font-size: 12.5px; color: var(--text-muted); margin: 0 0 10px; }
 
-  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }
   .legend .item { display: flex; align-items: center; gap: 6px; }
   .legend .swatch { width: 10px; height: 10px; border-radius: 3px; flex: none; }
 
   svg.chart { display: block; width: 100%; height: auto; overflow: visible; }
   .gridline { stroke: var(--gridline); stroke-width: 1; }
   .baseline { stroke: var(--baseline); stroke-width: 1; }
-  .bar-label { font-size: 11px; fill: var(--text-secondary); font-weight: 600; }
-  .cat-label { font-size: 11.5px; fill: var(--text-secondary); }
+  .bar-label { font-size: 12.5px; fill: var(--text-secondary); font-weight: 700; }
+  .cat-label { font-size: 13px; fill: var(--text-secondary); font-weight: 500; }
+  .axis-label { font-size: 11.5px; fill: var(--text-muted); font-weight: 600; }
 
   .tooltip {
     position: fixed; pointer-events: none; z-index: 50;
     background: var(--tooltip-bg); color: var(--tooltip-fg);
-    font-size: 12px; line-height: 1.5; padding: 8px 10px; border-radius: 8px;
+    font-size: 13px; line-height: 1.6; padding: 9px 11px; border-radius: 8px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     opacity: 0; transform: translate(-50%, calc(-100% - 10px)); transition: opacity .08s ease;
     white-space: nowrap;
@@ -217,26 +280,42 @@
   .tooltip.show { opacity: 1; }
   .tooltip b { font-weight: 700; }
 
-  table.dtable { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  table.dtable { width: 100%; border-collapse: collapse; font-size: 13.5px; }
   table.dtable th, table.dtable td {
     text-align: right; padding: 7px 10px; border-bottom: 1px solid var(--gridline);
     font-variant-numeric: tabular-nums; white-space: nowrap;
   }
   table.dtable th:first-child, table.dtable td:first-child { text-align: left; font-variant-numeric: normal; white-space: normal; }
   table.dtable thead th {
-    color: var(--text-muted); font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: .02em;
+    color: var(--text-muted); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: .02em;
     border-bottom: 1px solid var(--baseline);
   }
   table.dtable tbody tr:hover { background: var(--surface-2); }
+  #topCreativeTable td:first-child, #badCreativeTable td:first-child { width: 56px; text-align: center; padding: 6px 8px; }
+  #topCreativeTable th:nth-child(2), #badCreativeTable th:nth-child(2),
+  #topCreativeTable td:nth-child(2), #badCreativeTable td:nth-child(2) {
+    text-align: left; font-variant-numeric: normal; white-space: normal; max-width: 300px;
+  }
+
+  /* creative thumbnails */
+  .creative-thumb {
+    width: 48px; height: 48px; border-radius: 8px; overflow: hidden; flex: none;
+    background: var(--surface-2); display: flex; align-items: center; justify-content: center;
+    margin: 0 auto;
+  }
+  .creative-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .creative-thumb.broken { color: var(--text-muted); font-size: 18px; opacity: .55; }
+  .creative-thumb-sm { width: 40px; height: 40px; border-radius: 7px; }
+  .top5-thumb-slot { width: 100%; }
   .table-scroll { overflow-x: auto; }
-  .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+  .badge { display: inline-block; padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 700; }
   .badge.good { background: color-mix(in srgb, var(--status-good) 16%, transparent); color: var(--status-good); }
   .badge.critical { background: color-mix(in srgb, var(--status-critical) 16%, transparent); color: var(--status-critical); }
   .badge.muted { background: color-mix(in srgb, var(--status-muted) 22%, transparent); color: var(--text-secondary); }
 
   details.tv { margin-top: 6px; }
   details.tv > summary {
-    cursor: pointer; font-size: 12px; font-weight: 600; color: var(--text-secondary);
+    cursor: pointer; font-size: 13px; font-weight: 600; color: var(--text-secondary);
     list-style: none; display: inline-flex; align-items: center; gap: 5px;
   }
   details.tv > summary::-webkit-details-marker { display: none; }
@@ -263,22 +342,34 @@
   .top5-card {
     background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px;
     padding: 20px 14px 14px; text-align: center; position: relative;
-    display: flex; flex-direction: column;
+    display: flex; flex-direction: column; overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    transition: transform .16s ease, box-shadow .16s ease;
   }
+  .top5-card::before {
+    content: ''; position: absolute; left: 0; right: 0; top: 0; height: 3px;
+    background: linear-gradient(90deg, var(--status-good), var(--series-3));
+  }
+  .top5-card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px -12px rgba(0,0,0,0.18); }
+  .top5-card .creative-thumb {
+    width: 100%; height: auto; aspect-ratio: 1 / 1; border-radius: 10px; margin: 8px 0 12px;
+  }
+  .top5-card .creative-thumb.broken { font-size: 30px; }
   .top5-card .rank-badge {
-    position: absolute; top: 10px; left: 12px; font-size: 11px; font-weight: 800; color: var(--text-muted);
+    position: absolute; top: 13px; left: 12px; font-size: 11.5px; font-weight: 800; color: #fff;
+    background: rgba(0,0,0,0.55); padding: 2px 8px; border-radius: 999px; z-index: 1;
   }
   .top5-card .medal { font-size: 22px; margin-bottom: 2px; }
   .top5-card .roas-big { font-size: 26px; font-weight: 800; color: var(--status-good); margin: 2px 0 8px; }
-  .top5-card .roas-big .u { font-size: 11px; font-weight: 700; color: var(--text-muted); margin-left: 2px; }
+  .top5-card .roas-big .u { font-size: 11.5px; font-weight: 700; color: var(--text-muted); margin-left: 2px; }
   .top5-card .name {
-    font-size: 12px; color: var(--text-secondary); line-height: 1.45; margin-bottom: 12px;
+    font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;
     word-break: break-word; flex: 1;
   }
-  .top5-card .stats { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 9px; margin-top: auto; }
-  .top5-card .stats b { display: block; color: var(--text-primary); font-size: 12px; font-weight: 700; margin-top: 2px; }
+  .top5-card .stats { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 9px; margin-top: auto; }
+  .top5-card .stats b { display: block; color: var(--text-primary); font-size: 13px; font-weight: 700; margin-top: 2px; }
 
-  footer.foot { padding: 24px 0 8px; font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+  footer.foot { padding: 24px 0 8px; font-size: 12.5px; color: var(--text-muted); line-height: 1.7; }
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 700px) { .grid2 { grid-template-columns: 1fr; } }
   .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
@@ -295,6 +386,11 @@
       <p class="eyebrow">Meta Ads Dashboard</p>
       <h1>THMALL 협력광고 성과</h1>
       <p class="sub">act_885213872590921<br/>탑헬스 official · 기준일 2026-08-25</p>
+    </div>
+    <div class="partner-strip">
+      <img class="partner-logo" src="data:image/png;base64,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" alt="THMALL" />
+      <span class="partner-x">×</span>
+      <img class="partner-logo partner-logo-lp" src="data:image/png;base64,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" alt="LinkPrice" />
     </div>
     <button class="theme-toggle" id="themeToggle" type="button">🌙 다크모드</button>
     <nav class="side-nav" id="sideNav">
@@ -322,13 +418,20 @@
             <h2>1 · 요약</h2>
             <p class="desc">"공유 항목" 구매는 카탈로그 협력광고 특성상 파트너(네이버 등) 채널에서 발생한 구매까지 포함하는 Meta의 확장 귀속 지표입니다. ROAS 200% 미만은 손실 구간으로 표시합니다.</p>
           </div>
-          <div class="select-wrap">
-            <select class="range-select period-select">
-              <option value="7">최근 7일</option>
-              <option value="14">최근 14일</option>
-              <option value="30" selected>최근 30일</option>
-            </select>
-            <span class="arrow">▾</span>
+          <div class="date-range-wrap">
+            <div class="date-inputs">
+              <input type="date" class="date-input date-from" min="2026-07-01" max="2026-08-25" value="2026-07-27">
+              <span class="date-sep">~</span>
+              <input type="date" class="date-input date-to" min="2026-07-01" max="2026-08-25" value="2026-08-25">
+            </div>
+            <div class="chip-row">
+              <button type="button" class="chip" data-quick="7">최근 7일</button>
+              <button type="button" class="chip" data-quick="14">최근 14일</button>
+              <button type="button" class="chip active" data-quick="30">최근 30일</button>
+              <button type="button" class="chip" data-quick="jul">7월 전체</button>
+              <button type="button" class="chip" data-quick="aug">8월 전체</button>
+              <button type="button" class="chip" data-quick="all">전체 기간</button>
+            </div>
           </div>
         </div>
         <div class="kpi-grid" id="kpiGridMain"></div>
@@ -370,22 +473,28 @@
         <div class="page-head">
           <div>
             <h2>3 · 캠페인별 성과</h2>
-            <p class="desc">선택 기간 내 활성 캠페인의 ROAS(공유항목) 기준입니다. 초록은 ROAS≥200%(수익), 빨강은 ROAS&lt;200%(손실), 회색은 구매 지표를 산출할 수 없는 트래픽/혼합 목적 캠페인입니다.</p>
+            <p class="desc">선택 기간 내 활성 캠페인의 ROAS(공유항목) 기준입니다. 초록은 ROAS≥200%(수익), 빨강은 ROAS&lt;200%(손실)입니다.</p>
           </div>
-          <div class="select-wrap">
-            <select class="range-select period-select">
-              <option value="7">최근 7일</option>
-              <option value="14">최근 14일</option>
-              <option value="30" selected>최근 30일</option>
-            </select>
-            <span class="arrow">▾</span>
+          <div class="date-range-wrap">
+            <div class="date-inputs">
+              <input type="date" class="date-input date-from" min="2026-07-01" max="2026-08-25" value="2026-07-27">
+              <span class="date-sep">~</span>
+              <input type="date" class="date-input date-to" min="2026-07-01" max="2026-08-25" value="2026-08-25">
+            </div>
+            <div class="chip-row">
+              <button type="button" class="chip" data-quick="7">최근 7일</button>
+              <button type="button" class="chip" data-quick="14">최근 14일</button>
+              <button type="button" class="chip active" data-quick="30">최근 30일</button>
+              <button type="button" class="chip" data-quick="jul">7월 전체</button>
+              <button type="button" class="chip" data-quick="aug">8월 전체</button>
+              <button type="button" class="chip" data-quick="all">전체 기간</button>
+            </div>
           </div>
         </div>
         <div class="card">
           <div class="legend">
             <span class="item"><span class="swatch" style="background:var(--status-good)"></span>ROAS ≥ 200% (수익)</span>
             <span class="item"><span class="swatch" style="background:var(--status-critical)"></span>ROAS &lt; 200% (손실)</span>
-            <span class="item"><span class="swatch" style="background:var(--status-muted)"></span>측정 불가(트래픽/혼합)</span>
           </div>
           <div id="campaignChart"></div>
           <details class="tv" open><summary>데이터 테이블 보기</summary>
@@ -400,13 +509,20 @@
             <h2>4 · 애드셋별 성과</h2>
             <p class="desc">선택 기간 내 지출 상위 애드셋입니다. 파트너십 계열 애드셋이 상위권에 다수 포진해 있습니다.</p>
           </div>
-          <div class="select-wrap">
-            <select class="range-select period-select">
-              <option value="7">최근 7일</option>
-              <option value="14">최근 14일</option>
-              <option value="30" selected>최근 30일</option>
-            </select>
-            <span class="arrow">▾</span>
+          <div class="date-range-wrap">
+            <div class="date-inputs">
+              <input type="date" class="date-input date-from" min="2026-07-01" max="2026-08-25" value="2026-07-27">
+              <span class="date-sep">~</span>
+              <input type="date" class="date-input date-to" min="2026-07-01" max="2026-08-25" value="2026-08-25">
+            </div>
+            <div class="chip-row">
+              <button type="button" class="chip" data-quick="7">최근 7일</button>
+              <button type="button" class="chip" data-quick="14">최근 14일</button>
+              <button type="button" class="chip active" data-quick="30">최근 30일</button>
+              <button type="button" class="chip" data-quick="jul">7월 전체</button>
+              <button type="button" class="chip" data-quick="aug">8월 전체</button>
+              <button type="button" class="chip" data-quick="all">전체 기간</button>
+            </div>
           </div>
         </div>
         <div class="card">
@@ -423,7 +539,7 @@
 
       <section class="page" id="page-creative">
         <h2>5 · 소재(광고)별 성과 — 성과 있는 소재 vs 없는 소재</h2>
-        <p class="desc">최근 30일 기준, 활성 소재 150개 · 지출 합계 ₩34,841,189. ROAS 200%를 기준으로 분류합니다.</p>
+        <p class="desc">최근 30일 기준, 활성 소재 150개 · 지출 합계 ₩34,841,189. ROAS 200%를 기준으로 분류합니다. 썸네일은 Meta에서 실시간으로 가져온 실제 소재 이미지입니다(CDN 링크 특성상 며칠 후 만료되어 깨질 수 있습니다).</p>
         <div class="card">
           <h3>지출 비중</h3>
           <div id="creativeShare"></div>
@@ -552,129 +668,72 @@ const daily = [
  {k:'08-24',spend:1960351,purch:177,value:8012618,roas:4.09},
 ];
 
-/* ---- Campaigns by period (fresh Meta MCP pull, 2026-08-25) ---- */
-const CAMPAIGNS_BY_PERIOD = {
-  '7': [
-    {name:"헤모키즈100만병_전체랜딩_전환_닥터라인", spend:3292537, purch:122, value:5899100, roas:1.7917},
-    {name:"파트너십_상품랜딩_전환_닥터라인", spend:2754144, purch:497, value:17272474, roas:6.2714},
-    {name:"상시_상품랜딩_전환_비포락토", spend:1752636, purch:151, value:9090726, roas:5.1869},
-    {name:"브랜드위크_스토리랜딩_전환_비포락토", spend:857849, purch:17, value:1190000, roas:1.3872},
-    {name:"상시_상품랜딩_전환_헤모키즈 컬렉션", spend:702843, purch:78, value:3885784, roas:5.5287},
-    {name:"파트너십_상품랜딩_전환_비포락토", spend:550531, purch:55, value:3837131, roas:6.9699},
-    {name:"상시_상품랜딩_전환_닥터라인", spend:547789, purch:41, value:1827032, roas:3.3353},
-    {name:"상시_상품랜딩_전환(컬렉션)_닥터라인 성인", spend:526988, purch:7, value:379600, roas:0.7203},
-    {name:"신제품(케일큐베리) 파트너십_전환_닥터라인", spend:507313, purch:17, value:845211, roas:1.6661},
-    {name:"상시(라운지 리뉴얼)_상품랜딩_전환_전체", spend:443936, purch:57, value:2540934, roas:5.7236},
-    {name:"이뮨 리뉴얼_스토리랜딩_전환_닥터라인 성인", spend:376764, purch:4, value:143200, roas:0.3801},
-  ],
-  '14': [
-    {name:"파트너십_상품랜딩_전환_닥터라인", spend:4949117, purch:868, value:32142772, roas:6.4946},
-    {name:"헤모키즈100만병_전체랜딩_전환_닥터라인", spend:4625135, purch:149, value:7136200, roas:1.5429},
-    {name:"상시_상품랜딩_전환_비포락토", spend:3546847, purch:282, value:18687246, roas:5.2687},
-    {name:"브랜드위크_스토리랜딩_전환_비포락토", spend:2260300, purch:51, value:3408900, roas:1.5082},
-    {name:"상시_상품랜딩_전환_헤모키즈 컬렉션", spend:1417959, purch:137, value:6128591, roas:4.3221},
-    {name:"상시_상품랜딩_전환_닥터라인", spend:1040124, purch:97, value:4548338, roas:4.3729},
-    {name:"파트너십_상품랜딩_전환_비포락토", spend:949989, purch:99, value:7207875, roas:7.5873},
-    {name:"상시(라운지 리뉴얼)_상품랜딩_전환_전체", spend:798123, purch:109, value:4642668, roas:5.817},
-    {name:"신제품(케일큐베리) 파트너십_전환_닥터라인", spend:740261, purch:27, value:1366411, roas:1.8459},
-    {name:"이뮨 리뉴얼_스토리랜딩_전환_닥터라인 성인", spend:567258, purch:5, value:170700, roas:0.3009},
-    {name:"상시_상품랜딩_전환(컬렉션)_닥터라인 성인", spend:526988, purch:7, value:379600, roas:0.7203},
-    {name:"오늘땡딜_네이버상품_전환(카탈로그)_비포락토", spend:299950, purch:15, value:754900, roas:2.5168},
-  ],
-  '30': [
-    {name:"파트너십_상품랜딩_전환_닥터라인", spend:9332617, purch:1864, value:69501454, roas:7.4472},
-    {name:"상시_상품랜딩_전환_비포락토", spend:7553185, purch:591, value:38184699, roas:5.0554},
-    {name:"헤모키즈100만병_전체랜딩_전환_닥터라인", spend:4625135, purch:149, value:7136200, roas:1.5429},
-    {name:"상시_상품랜딩_전환_헤모키즈 컬렉션", spend:3058154, purch:326, value:13055824, roas:4.2692},
-    {name:"브랜드위크_스토리랜딩_전환_비포락토", spend:2444908, purch:58, value:3931700, roas:1.6081},
-    {name:"상시_상품랜딩_전환_닥터라인", spend:2211759, purch:171, value:8395882, roas:3.796},
-    {name:"파트너십_상품랜딩_전환_비포락토", spend:1904007, purch:181, value:14302328, roas:7.5117},
-    {name:"상시(라운지 리뉴얼)_상품랜딩_전환_전체", spend:1607400, purch:191, value:8604728, roas:5.3532},
-    {name:"신제품(케일큐베리) 파트너십_전환_닥터라인", spend:740261, purch:27, value:1366411, roas:1.8459},
-    {name:"눈꽃페스타_네이버스토리_전환(카탈로그)_비포락토", spend:717944, purch:22, value:1197000, roas:1.6673},
-    {name:"오늘땡딜_네이버상품_전환(카탈로그)_닥터라인", spend:599772, purch:61, value:3849400, roas:6.4181},
-    {name:"이뮨 리뉴얼_스토리랜딩_전환_닥터라인 성인", spend:567258, purch:5, value:170700, roas:0.3009},
-    {name:"상시_상품랜딩_전환(컬렉션)_닥터라인 성인", spend:526988, purch:7, value:379600, roas:0.7203},
-    {name:"오늘땡딜_네이버상품_전환(카탈로그)_비포락토", spend:299950, purch:15, value:754900, roas:2.5168},
-    {name:"파트너십_네이버상품_전환_비포락토", spend:113895, purch:4, value:184000, roas:1.6155},
-    {name:"상시_상품랜딩_전환(컬렉션)_닥터라인", spend:2131797, purch:null, value:null, roas:null, note:'혼합 지표'},
-    {name:"신제품(케일큐베리)_전체랜딩_전환_닥터라인", spend:1739550, purch:null, value:null, roas:null, note:'혼합 지표'},
-  ],
-};
+/* ---- Daily granular data (2026-07-01 ~ 2026-08-25), fresh Meta MCP pull ---- */
+/* powers the date-range picker: every campaign/adset row is [spend, purch, value] per day, index-aligned with DATES */
+const DATES = ["2026-07-01", "2026-07-02", "2026-07-03", "2026-07-04", "2026-07-05", "2026-07-06", "2026-07-07", "2026-07-08", "2026-07-09", "2026-07-10", "2026-07-11", "2026-07-12", "2026-07-13", "2026-07-14", "2026-07-15", "2026-07-16", "2026-07-17", "2026-07-18", "2026-07-19", "2026-07-20", "2026-07-21", "2026-07-22", "2026-07-23", "2026-07-24", "2026-07-25", "2026-07-26", "2026-07-27", "2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31", "2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05", "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10", "2026-08-11", "2026-08-12", "2026-08-13", "2026-08-14", "2026-08-15", "2026-08-16", "2026-08-17", "2026-08-18", "2026-08-19", "2026-08-20", "2026-08-21", "2026-08-22", "2026-08-23", "2026-08-24", "2026-08-25"];
 
-const ADSETS_BY_PERIOD = {
-  '7': [
-    {name:"2단계(08.18-08.31)_헤모키즈100만병_전환_닥터라인_헤모키즈_논타겟_구매", spend:3292537, purch:116, value:5635500, roas:1.7116},
-    {name:"상시_전환_비포락토_비포락토100_논타겟_구매", spend:1409865, purch:116, value:7209138, roas:5.1134},
-    {name:"파트너십_전환_닥터라인키즈_헤모키즈_논타겟_구매", spend:1271122, purch:320, value:9475301, roas:7.4543},
-    {name:"파트너십_전환_닥터라인_헤모퀸즈 플러스_논타겟_구매", spend:731330, purch:59, value:2921766, roas:3.9951},
-    {name:"상시_전환_닥터라인_헤모키즈_논타겟_구매", spend:702843, purch:78, value:3885784, roas:5.5287},
-    {name:"파트너십_전환_비포락토_전체_논타겟_구매", spend:550531, purch:55, value:3837131, roas:6.9699},
-    {name:"신제품(케일큐베리) 파트너십_전환_케일큐베리_논타겟_구매", spend:507313, purch:17, value:845211, roas:1.6661},
-    {name:"파트너십_전환_닥터라인_헤모키즈(2)_논타겟_구매", spend:457196, purch:98, value:3852208, roas:8.4257},
-    {name:"라운지 리뉴얼_전환_전체_전체_논타겟_구매", spend:443936, purch:57, value:2540934, roas:5.7236},
-    {name:"브랜드(앵콜)_전환(카탈로그)_비포락토_전체_논타겟_구매", spend:429408, purch:11, value:866400, roas:2.0177},
-    {name:"브랜드위크_전환(카탈로그)_비포락토_전체_논타겟_구매", spend:428441, purch:6, value:323600, roas:0.7553},
-    {name:"상시_전환_닥터라인_유소아패키지_논타겟_구매", spend:407601, purch:30, value:1126696, roas:2.7642},
-    {name:"이뮨 리뉴얼_전환_닥터라인 성인_이뮨_논타겟_구매", spend:376764, purch:4, value:143200, roas:0.3801},
-    {name:"상시_전환_비포락토_전체_논타겟_구매", spend:342771, purch:35, value:1881588, roas:5.4893},
-    {name:"상시_전환_닥터라인 성인_헤모퀸즈 플러스_논타겟_구매", spend:219857, purch:5, value:273800, roas:1.2454},
-    {name:"상시_전환_닥터라인 성인_헤모씨 다이렉트_논타겟_구매", spend:174670, purch:2, value:105800, roas:0.6057},
-    {name:"파트너십_전환_닥터라인_맥스투퍼데이_논타겟_구매", spend:157828, purch:15, value:817900, roas:5.1822},
-    {name:"상시_전환_닥터라인_마그네슘_논타겟_구매", spend:140188, purch:11, value:700337, roas:4.9957},
-    {name:"파트너십_전환_닥터라인_하이드레이션_논타겟_구매", spend:136668, purch:5, value:205300, roas:1.5022},
-  ],
-  '14': [
-    {name:"2단계(08.18-08.31)_헤모키즈100만병_전환_닥터라인_헤모키즈_논타겟_구매", spend:3292537, purch:116, value:5635500, roas:1.7116},
-    {name:"상시_전환_비포락토_비포락토100_논타겟_구매", spend:2845868, purch:213, value:15370906, roas:5.4011},
-    {name:"파트너십_전환_닥터라인키즈_헤모키즈_논타겟_구매", spend:2537041, purch:563, value:17486231, roas:6.8924},
-    {name:"파트너십_전환_닥터라인_헤모퀸즈 플러스_논타겟_구매", spend:1444019, purch:160, value:8871305, roas:6.1435},
-    {name:"상시_전환_닥터라인_헤모키즈_논타겟_구매", spend:1417959, purch:137, value:6128591, roas:4.3221},
-    {name:"1단계(08.13-08.17)_헤모키즈100만병_전환_닥터라인_헤모키즈_논타겟_구매", spend:1332598, purch:33, value:1500700, roas:1.1261},
-    {name:"브랜드위크_전환(카탈로그)_비포락토_전체_논타겟_구매", spend:1133728, purch:22, value:1396600, roas:1.2319},
-    {name:"브랜드(앵콜)_전환(카탈로그)_비포락토_전체_논타겟_구매", spend:1126572, purch:29, value:2012300, roas:1.7862},
-    {name:"파트너십_전환_비포락토_전체_논타겟_구매", spend:949989, purch:99, value:7207875, roas:7.5873},
-    {name:"라운지 리뉴얼_전환_전체_전체_논타겟_구매", spend:798123, purch:109, value:4642668, roas:5.817},
-    {name:"상시_전환_닥터라인_유소아패키지_논타겟_구매", spend:759708, purch:77, value:3433101, roas:4.519},
-    {name:"신제품(케일큐베리) 파트너십_전환_케일큐베리_논타겟_구매", spend:740261, purch:27, value:1366411, roas:1.8459},
-    {name:"상시_전환_비포락토_전체_논타겟_구매", spend:700979, purch:69, value:3316341, roas:4.731},
-    {name:"파트너십_전환_닥터라인_헤모키즈(2)_논타겟_구매", spend:673561, purch:125, value:4762036, roas:7.0699},
-    {name:"이뮨 리뉴얼_전환_닥터라인 성인_이뮨_논타겟_구매", spend:567258, purch:5, value:170700, roas:0.3009},
-    {name:"오늘땡딜_전환(카탈로그)_비포락토_전체_논타겟_구매", spend:299950, purch:15, value:754900, roas:2.5168},
-    {name:"상시_전환_닥터라인_마그네슘_논타겟_구매", spend:280416, purch:20, value:1115237, roas:3.9771},
-    {name:"상시_전환_닥터라인 성인_헤모퀸즈 플러스_논타겟_구매", spend:219857, purch:5, value:273800, roas:1.2454},
-    {name:"상시_전환_닥터라인 성인_헤모씨 다이렉트_논타겟_구매", spend:174670, purch:2, value:105800, roas:0.6057},
-    {name:"파트너십_전환_닥터라인_맥스투퍼데이_논타겟_구매", spend:157828, purch:15, value:817900, roas:5.1822},
-  ],
-  '30': [
-    {name:"상시_전환_비포락토_비포락토100_논타겟_구매", spend:6046674, purch:456, value:32049578, roas:5.3004},
-    {name:"파트너십_전환_닥터라인키즈_헤모키즈_논타겟_구매", spend:5446960, purch:1290, value:40743039, roas:7.48},
-    {name:"2단계(08.18-08.31)_헤모키즈100만병_전환_닥터라인_헤모키즈_논타겟_구매", spend:3292537, purch:116, value:5635500, roas:1.7116},
-    {name:"상시_전환_닥터라인_헤모키즈_논타겟_구매", spend:3058154, purch:326, value:13055824, roas:4.2692},
-    {name:"파트너십_전환_닥터라인_헤모퀸즈 플러스_논타겟_구매", spend:2879729, purch:429, value:22973179, roas:7.9775},
-    {name:"파트너십_전환_비포락토_전체_논타겟_구매", spend:1835125, purch:178, value:14078228, roas:7.6715},
-    {name:"라운지 리뉴얼_전환_전체_전체_논타겟_구매", spend:1607400, purch:191, value:8604728, roas:5.3532},
-    {name:"상시_전환_비포락토_전체_논타겟_구매", spend:1506511, purch:135, value:6135121, roas:4.0724},
-    {name:"상시_전환_닥터라인_유소아패키지_논타겟_구매", spend:1480594, purch:140, value:6796245, roas:4.5902},
-    {name:"1단계(08.13-08.17)_헤모키즈100만병_전환_닥터라인_헤모키즈_논타겟_구매", spend:1332598, purch:33, value:1500700, roas:1.1261},
-    {name:"브랜드위크_전환(카탈로그)_비포락토_전체_논타겟_구매", spend:1243319, purch:28, value:1827500, roas:1.4699},
-    {name:"브랜드(앵콜)_전환(카탈로그)_비포락토_전체_논타겟_구매", spend:1201589, purch:30, value:2104200, roas:1.7512},
-    {name:"신제품(케일큐베리) 파트너십_전환_케일큐베리_논타겟_구매", spend:740261, purch:27, value:1366411, roas:1.8459},
-    {name:"파트너십_전환_닥터라인_헤모키즈(2)_논타겟_구매", spend:673561, purch:125, value:4762036, roas:7.0699},
-    {name:"이뮨 리뉴얼_전환_닥터라인 성인_이뮨_논타겟_구매", spend:567258, purch:5, value:170700, roas:0.3009},
-    {name:"상시_전환_닥터라인_마그네슘_논타겟_구매", spend:454155, purch:26, value:1442837, roas:3.177},
-    {name:"오늘땡딜_전환(카탈로그)_비포락토_전체_논타겟_구매", spend:299950, purch:15, value:754900, roas:2.5168},
-    {name:"상시_전환_닥터라인 성인_헤모퀸즈 플러스_논타겟_구매", spend:219857, purch:5, value:273800, roas:1.2454},
-    {name:"상시_전환_닥터라인 성인_헤모씨 다이렉트_논타겟_구매", spend:174670, purch:2, value:105800, roas:0.6057},
-    {name:"상시_전환_닥터라인_징크키즈_논타겟_구매", spend:170216, purch:3, value:82500, roas:0.4847},
-  ],
-};
+const CAMPAIGN_DAILY = [
+  {name:"파트너십_상품랜딩_전환_닥터라인", data:[[274410, 66, 1981586], [240579, 64, 1855267], [236725, 65, 1961627], [206120, 50, 1837157], [255708, 38, 1123929], [241889, 55, 1772087], [214681, 53, 1772329], [198960, 25, 934300], [194213, 39, 1497300], [178047, 36, 1172300], [183725, 20, 679771], [238994, 25, 764318], [211382, 35, 1549300], [218417, 40, 1421517], [192546, 22, 782071], [154083, 13, 577000], [155024, 20, 640002], [138765, 28, 1179374], [171667, 30, 1106600], [171601, 37, 1111346], [194399, 46, 1431755], [218091, 41, 1382961], [220179, 34, 1657766], [228981, 33, 1149937], [220676, 52, 1815646], [271567, 80, 2595561], [307939, 72, 2978139], [274530, 57, 2606402], [265717, 59, 2198943], [249239, 69, 2459183], [279188, 65, 2235754], [236253, 59, 1845988], [276913, 66, 2663853], [254751, 55, 1965582], [303176, 58, 2065030], [263296, 52, 2970530], [272344, 75, 2155163], [269120, 40, 1574676], [268383, 46, 1703477], [287620, 71, 2837349], [303464, 72, 2503052], [285257, 36, 1749206], [248353, 66, 2216653], [314740, 50, 2172736], [315640, 54, 2065891], [318236, 25, 738788], [343052, 55, 2101093], [369695, 85, 3825931], [282659, 86, 2931941], [382895, 79, 2898512], [423517, 76, 2536281], [408112, 74, 2520052], [389404, 61, 1883813], [437651, 48, 1610384], [429915, 73, 2891490], [485282, 63, 2589008]]},
+  {name:"상시_상품랜딩_전환_비포락토", data:[[306718, 6, 329800], [297608, 8, 369300], [284827, 2, 515400], [270546, 0, 0], [326371, 2, 64800], [197076, 0, 0], [149671, 6, 859600], [122066, 2, 178800], [107687, 3, 285300], [125708, 2, 181800], [120359, 0, 0], [142802, 1, 90900], [137046, 0, 0], [133758, 7, 574000], [124823, 4, 220000], [107278, 0, 0], [107103, 0, 0], [99667, 2, 183800], [115078, 0, 0], [111454, 0, 0], [119200, 2, 164400], [227402, 7, 437700], [377236, 2, 110000], [278739, 2, 154500], [230109, 2, 78400], [278196, 13, 989092], [252740, 3, 301200], [249176, 9, 370122], [224221, 4, 200700], [226957, 3, 209300], [192434, 16, 1471466], [326265, 33, 2579832], [251195, 36, 1730840], [273926, 44, 1670789], [293245, 33, 2271835], [205511, 22, 1607100], [230930, 25, 1735152], [223859, 7, 438700], [271312, 11, 693900], [227194, 19, 1319747], [279177, 31, 1907679], [260941, 18, 1381256], [236996, 13, 604800], [250256, 11, 1266200], [240235, 15, 768197], [255148, 31, 2593117], [254217, 18, 1520100], [296418, 25, 1462851], [226809, 17, 828810], [242840, 34, 1810453], [239091, 12, 957300], [236191, 17, 977500], [254411, 20, 1528160], [263520, 18, 1541482], [289775, 33, 1447021], [284659, 20, 1404252]]},
+  {name:"상시_상품랜딩_전환_닥터라인", data:[[208898, 48, 831000], [262239, 50, 1207600], [311993, 58, 1394200], [292894, 51, 1190100], [353680, 26, 494400], [204685, 4, 118000], [141054, 10, 671500], [124945, 6, 233600], [125745, 7, 615200], [126615, 7, 233600], [115914, 2, 55000], [142374, 2, 39960], [145523, 9, 555200], [174275, 8, 521900], [130283, 0, 0], [122291, 1, 25500], [127197, 4, 164200], [108824, 1, 31300], [142498, 2, 85300], [119269, 3, 272200], [113497, 1, 54400], [125615, 3, 169200], [137634, 2, 96100], [134948, 1, 121400], [123244, 6, 181800], [160534, 5, 184800], [151614, 3, 129800], [140701, 6, 320144], [59061, 2, 145100], [36667, 0, 0], [29989, 1, 9900], [48476, 10, 577200], [46132, 12, 504400], [44851, 3, 213100], [47986, 3, 119800], [43359, 4, 222000], [51143, 4, 300000], [79583, 9, 488500], [80587, 4, 225900], [70088, 4, 170600], [80864, 4, 236300], [76996, 16, 811300], [66139, 6, 338600], [68999, 7, 280300], [61510, 7, 256351], [65118, 3, 92300], [76071, 9, 462600], [77502, 8, 479854], [70040, 8, 403837], [74201, 6, 245800], [89196, 10, 673900], [71697, 2, 52000], [67453, 0, 0], [89993, 1, 29800], [85209, 14, 421696], [110067, 4, 272000]]},
+  {name:"상시_상품랜딩_전환_헤모키즈 컬렉션", data:[[118966, 26, 1065233], [101588, 14, 724325], [92199, 10, 411400], [90733, 14, 618000], [124479, 15, 728800], [104254, 10, 298000], [104870, 16, 782300], [103774, 16, 672400], [94087, 16, 612400], [94519, 13, 457900], [88177, 7, 249400], [113606, 15, 467200], [105801, 13, 556100], [107781, 12, 521800], [103815, 9, 392100], [91167, 13, 391700], [92689, 11, 593500], [85123, 0, 0], [102290, 4, 190200], [96158, 11, 439600], [102476, 16, 777900], [96577, 12, 429548], [94578, 4, 125200], [103204, 12, 489600], [128459, 7, 194600], [135812, 16, 510790], [126145, 21, 634482], [107849, 9, 449300], [93398, 13, 526905], [87047, 14, 624913], [93474, 8, 483600], [93889, 10, 381000], [120683, 15, 506000], [93379, 7, 176300], [118271, 15, 475462], [86280, 14, 535607], [97834, 8, 303400], [85761, 14, 560600], [97777, 5, 229900], [96901, 7, 135613], [105695, 13, 393362], [107211, 7, 279700], [97768, 9, 252707], [96723, 16, 500800], [91399, 8, 260300], [104282, 7, 219100], [104904, 6, 266400], [112829, 6, 463800], [97464, 20, 818984], [97195, 10, 515800], [109553, 15, 654200], [89272, 11, 439400], [88773, 8, 349600], [100905, 8, 379200], [119681, 6, 728600], [134222, 15, 645200]]},
+  {name:"헤모키즈100만병_전체랜딩_전환_닥터라인", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [159789, 1, 91900], [224430, 6, 221200], [350931, 6, 347700], [223283, 3, 90100], [374165, 11, 486200], [547404, 20, 971800], [540291, 22, 927100], [434375, 15, 647500], [423077, 11, 563100], [419370, 14, 657300], [428109, 17, 975200], [499944, 23, 1157100], [491900, 15, 770000]]},
+  {name:"파트너십_상품랜딩_전환_비포락토", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [231878, 0, 0], [404994, 3, 182400], [330885, 3, 200900], [150557, 2, 122200], [147545, 0, 0], [139969, 1, 27800], [170079, 0, 0], [84365, 8, 871300], [46988, 0, 0], [49890, 1, 33400], [45645, 3, 255100], [32214, 1, 55000], [62764, 1, 36980], [57282, 14, 1212800], [55519, 8, 502700], [60289, 12, 1071480], [41080, 0, 0], [38217, 9, 993793], [43801, 6, 540700], [53697, 1, 32400], [37891, 6, 422200], [74297, 12, 1066600], [47653, 11, 1133400], [50869, 1, 31300], [59108, 10, 720639], [56415, 3, 154500], [53377, 8, 614000], [62948, 6, 352605], [69088, 5, 364300], [64048, 13, 1157051], [64626, 6, 327000], [71271, 10, 588700], [75377, 8, 426600], [85077, 4, 241400], [93136, 5, 283580], [96996, 9, 812800], [95486, 2, 64800]]},
+  {name:"상시(라운지 리뉴얼)_상품랜딩_전환_전체", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [42387, 0, 0], [90206, 3, 82580], [99522, 2, 62600], [49921, 1, 78700], [72457, 2, 62600], [57202, 3, 90100], [48971, 2, 62600], [49779, 0, 0], [45192, 4, 177400], [51717, 4, 294600], [49365, 3, 209300], [50268, 4, 180200], [54413, 7, 361900], [49062, 4, 337000], [48745, 2, 55600], [46402, 0, 0], [54455, 4, 271600], [54960, 8, 481500], [50966, 3, 93900], [46463, 1, 81000], [44605, 5, 254724], [45904, 4, 149000], [52610, 6, 240900], [52785, 6, 366600], [54968, 11, 503000], [56825, 2, 123200], [41371, 3, 147300], [45518, 3, 75472], [47842, 2, 106200], [50633, 5, 274200], [46010, 6, 303884], [63362, 13, 489579], [55505, 5, 217100], [46213, 14, 484994], [46495, 3, 67375], [47109, 4, 163300], [45256, 13, 699565], [53148, 5, 183200], [60461, 8, 286200], [49364, 14, 587186], [48001, 4, 111200], [59232, 7, 440100], [67177, 10, 463800], [64289, 4, 125548], [79845, 7, 498000], [76028, 11, 315100], [80472, 17, 730200]]},
+  {name:"브랜드위크_스토리랜딩_전환_비포락토", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [184608, 7, 522800], [242602, 8, 574100], [208429, 2, 183800], [168706, 4, 271700], [154495, 3, 179300], [195989, 1, 56600], [173399, 4, 212200], [258831, 12, 741200], [168119, 3, 172500], [178162, 2, 118700], [142448, 2, 85100], [135920, 6, 547400], [113991, 0, 0], [119209, 4, 266300], [0, 0, 0], [0, 1, 68000]]},
+  {name:"신제품(케일큐베리) 파트너십_상품랜딩_전환_닥터라인", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [38720, 3, 94500], [54493, 2, 170800], [75612, 3, 110900], [64123, 2, 145000], [51413, 4, 217900], [55046, 5, 361800], [63437, 2, 108800], [89302, 1, 29700], [81351, 1, 29800], [86234, 0, 0], [80530, 4, 97211], [69128, 2, 63200]]},
+  {name:"눈꽃페스타_네이버스토리_전환(카탈로그)_비포락토", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [16874, 0, 0], [46225, 0, 0], [49865, 4, 236600], [87923, 4, 273200], [114541, 1, 61600], [103525, 6, 167300], [85619, 2, 223800], [89535, 1, 91900], [87006, 2, 57300], [99930, 1, 54000], [0, 1, 31300], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]},
+  {name:"파트너십_네이버상품_전환_비포락토", data:[[18667, 0, 0], [22754, 0, 0], [15253, 0, 0], [17008, 0, 0], [26770, 0, 0], [20174, 0, 0], [20281, 0, 0], [20239, 0, 0], [21043, 0, 0], [17960, 4, 437200], [13421, 0, 0], [26027, 0, 0], [30538, 1, 31300], [58656, 0, 0], [42288, 3, 99400], [31664, 0, 0], [31059, 0, 0], [23422, 0, 0], [33673, 0, 0], [33685, 0, 0], [23819, 0, 0], [27749, 0, 0], [32591, 0, 0], [31602, 0, 0], [26752, 0, 0], [37272, 2, 130000], [34953, 0, 0], [27699, 2, 54000], [13971, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]},
+  {name:"이뮨 리뉴얼_스토리랜딩_전환_닥터라인 성인", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [22686, 0, 0], [50899, 0, 0], [49017, 0, 0], [67892, 1, 27500], [55530, 1, 24500], [62158, 0, 0], [52451, 2, 89000], [47385, 0, 0], [50566, 0, 0], [50195, 1, 29700], [58479, 0, 0], [76990, 2, 76780]]},
+  {name:"상시_상품랜딩_전환(컬렉션)_닥터라인 성인", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [9550, 0, 0], [56507, 0, 0], [99657, 2, 157000], [122138, 1, 81000], [122942, 0, 0], [116194, 4, 141600], [91780, 0, 0]]},
+  {name:"오늘끝딜_네이버상품_전환(카탈로그)_닥터라인", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [130504, 9, 626100], [177829, 10, 564100], [201943, 20, 1464100], [89496, 17, 1009500], [0, 2, 58800], [0, 2, 57800], [0, 1, 69000], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]},
+  {name:"오늘끝딜_네이버상품_전환(카탈로그)_비포락토", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [207616, 12, 622100], [92334, 1, 31300], [0, 0, 0], [0, 1, 25000], [0, 1, 76500], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]},
+];
 
-/* KPI aggregates per period (purchase-optimized campaigns only) */
-const KPI_BY_PERIOD = {
-  '7':  { spend:12313330, purch:1046, value:46911192, roas:3.8098, acctTotal:13687256, campCount:11 },
-  '14': { spend:21722051, purch:1846, value:86574201, roas:3.9855, acctTotal:25259097, campCount:12 },
-  '30': { spend:36303233, purch:3672, value:171014826, roas:4.7107, acctTotal:42435542, campCount:15 },
+const ADSET_DAILY = [
+  {name:"파트너십_전환_닥터라인키즈_헤모키즈_논타겟_구매", data:[[223900, 64, 1931586], [187508, 62, 1795667], [190450, 64, 1814227], [169363, 50, 1837157], [203328, 38, 1123929], [190919, 54, 1740087], [168705, 51, 1590329], [156945, 24, 898500], [155469, 39, 1497300], [141382, 36, 1172300], [155887, 20, 679771], [193975, 25, 764318], [171471, 34, 1392300], [160783, 39, 1390217], [138557, 21, 691171], [114431, 13, 577000], [120316, 20, 640002], [104308, 28, 1179374], [124114, 28, 974100], [128280, 37, 1111346], [124118, 46, 1431755], [108171, 39, 1220961], [127881, 23, 872300], [152474, 22, 837433], [160161, 41, 1149155], [191321, 63, 1570156], [206080, 47, 1706557], [183001, 36, 1074787], [174636, 44, 1480249], [170920, 53, 1705480], [180709, 45, 1247643], [153327, 46, 1264406], [193040, 48, 1335253], [176574, 33, 962804], [204801, 47, 1549491], [166493, 35, 1620736], [186322, 65, 1922786], [169327, 30, 1078245], [163411, 37, 1165157], [194189, 46, 1947315], [195768, 52, 1625743], [181475, 22, 786231], [160959, 53, 1636958], [185508, 32, 1298636], [167491, 27, 879393], [174589, 17, 441788], [192430, 39, 1218085], [203467, 53, 1749839], [156782, 59, 1634639], [185206, 44, 1292688], [182061, 43, 1170513], [173832, 47, 1349036], [166203, 52, 1538088], [208674, 27, 766143], [198364, 48, 1724195], [192599, 26, 1062800]]},
+  {name:"상시_전환_비포락토_비포락토100_논타겟_구매", data:[[148785, 1, 69700], [151786, 7, 307700], [144536, 0, 0], [138815, 0, 0], [167954, 2, 64800], [113049, 0, 0], [90132, 4, 608000], [74365, 2, 178800], [63149, 1, 28500], [78892, 2, 181800], [76915, 0, 0], [88602, 0, 0], [85934, 0, 0], [34749, 7, 574000], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [26434, 0, 0], [50574, 2, 164400], [162006, 7, 437700], [325188, 0, 0], [229727, 2, 154500], [183406, 2, 78400], [220681, 11, 879092], [201209, 3, 301200], [201757, 7, 314522], [174974, 4, 200700], [180682, 2, 150500], [159121, 14, 1415866], [261576, 30, 2449832], [193909, 27, 1432440], [219657, 32, 1264103], [234982, 25, 1912035], [160673, 17, 1347900], [187906, 18, 1637480], [182395, 7, 438700], [220477, 8, 555100], [185587, 15, 1205747], [215220, 23, 1173456], [206777, 13, 1160900], [190932, 10, 510900], [201191, 9, 1207200], [191381, 12, 695900], [208898, 22, 2179417], [199159, 11, 1126600], [237665, 20, 1280851], [178427, 10, 459234], [195763, 28, 1612853], [197907, 12, 957300], [184987, 17, 977500], [206091, 11, 661060], [210269, 16, 1425882], [236422, 22, 1115309], [221881, 16, 1298252]]},
+  {name:"상시_전환_닥터라인_헤모키즈_논타겟_구매", data:[[118966, 26, 1065233], [101588, 14, 724325], [92199, 10, 411400], [90733, 14, 618000], [124479, 15, 728800], [104254, 10, 298000], [104870, 16, 782300], [103774, 16, 672400], [94087, 16, 612400], [94519, 13, 457900], [88177, 7, 249400], [113606, 15, 467200], [105801, 13, 556100], [107781, 12, 521800], [103815, 9, 392100], [91167, 13, 391700], [92689, 11, 593500], [85123, 0, 0], [102290, 4, 190200], [96158, 11, 439600], [102476, 16, 777900], [96577, 12, 429548], [94578, 4, 125200], [103204, 12, 489600], [128459, 7, 194600], [135812, 16, 510790], [126145, 21, 634482], [107849, 9, 449300], [93398, 13, 526905], [87047, 14, 624913], [93474, 8, 483600], [93889, 10, 381000], [120683, 15, 506000], [93379, 7, 176300], [118271, 15, 475462], [86280, 14, 535607], [97834, 8, 303400], [85761, 14, 560600], [97777, 5, 229900], [96901, 7, 135613], [105695, 13, 393362], [107211, 7, 279700], [97768, 9, 252707], [96723, 16, 500800], [91399, 8, 260300], [104282, 7, 219100], [104904, 6, 266400], [112829, 6, 463800], [97464, 20, 818984], [97195, 10, 515800], [109553, 15, 654200], [89272, 11, 439400], [88773, 8, 349600], [100905, 8, 379200], [119681, 6, 728600], [134222, 15, 645200]]},
+  {name:"상시_전환_비포락토_전체_논타겟_구매", data:[[157933, 5, 260100], [145822, 1, 61600], [140291, 2, 515400], [131731, 0, 0], [158417, 0, 0], [84027, 0, 0], [59539, 2, 251600], [47701, 0, 0], [44538, 2, 256800], [46816, 0, 0], [43444, 0, 0], [54200, 1, 90900], [51112, 0, 0], [99009, 0, 0], [124823, 4, 220000], [107278, 0, 0], [107103, 0, 0], [99667, 2, 183800], [115078, 0, 0], [85020, 0, 0], [68626, 0, 0], [65396, 0, 0], [52048, 2, 110000], [49012, 0, 0], [46703, 0, 0], [57515, 2, 110000], [51531, 0, 0], [47419, 2, 55600], [49247, 0, 0], [46275, 1, 58800], [33313, 2, 55600], [64689, 3, 130000], [57286, 9, 298400], [54269, 12, 406686], [58263, 8, 359800], [44838, 5, 259200], [43024, 7, 97672], [41464, 0, 0], [50835, 3, 138800], [41607, 4, 114000], [63957, 8, 734222], [54164, 5, 220356], [46064, 3, 93900], [49065, 2, 59000], [48854, 3, 72297], [46250, 9, 413700], [55058, 7, 393500], [58753, 5, 182000], [48382, 7, 369576], [47077, 6, 197600], [41184, 0, 0], [51204, 0, 0], [48320, 9, 867100], [53251, 2, 115600], [53353, 11, 331712], [62778, 4, 106000]]},
+  {name:"라운지 리뉴얼_전환_전체_전체_논타겟_구매", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [42387, 0, 0], [90206, 3, 82580], [99522, 2, 62600], [49921, 1, 78700], [72457, 2, 62600], [57202, 3, 90100], [48971, 2, 62600], [49779, 0, 0], [45192, 4, 177400], [51717, 4, 294600], [49365, 3, 209300], [50268, 4, 180200], [54413, 7, 361900], [49062, 4, 337000], [48745, 2, 55600], [46402, 0, 0], [54455, 4, 271600], [54960, 8, 481500], [50966, 3, 93900], [46463, 1, 81000], [44605, 5, 254724], [45904, 4, 149000], [52610, 6, 240900], [52785, 6, 366600], [54968, 11, 503000], [56825, 2, 123200], [41371, 3, 147300], [45518, 3, 75472], [47842, 2, 106200], [50633, 5, 274200], [46010, 6, 303884], [63362, 13, 489579], [55505, 5, 217100], [46213, 14, 484994], [46495, 3, 67375], [47109, 4, 163300], [45256, 13, 699565], [53148, 5, 183200], [60461, 8, 286200], [49364, 14, 587186], [48001, 4, 111200], [59232, 7, 440100], [67177, 10, 463800], [64289, 4, 125548], [79845, 7, 498000], [76028, 11, 315100], [80472, 17, 730200]]},
+  {name:"상시_전환_닥터라인_유소아패키지_논타겟_구매", data:[[0, 0, 0], [0, 0, 0], [33757, 3, 89400], [44172, 3, 191900], [55218, 1, 35800], [49429, 1, 27000], [54380, 4, 388700], [47816, 1, 31300], [46936, 2, 274400], [49409, 1, 58800], [46754, 0, 0], [53380, 0, 0], [50220, 1, 31300], [53823, 6, 417300], [39034, 0, 0], [30749, 0, 0], [29272, 0, 0], [25363, 0, 0], [32391, 1, 31300], [29494, 0, 0], [30531, 0, 0], [31840, 2, 141400], [29907, 0, 0], [34596, 0, 0], [35289, 2, 54000], [44229, 3, 129200], [43567, 3, 129800], [40473, 3, 218944], [36593, 2, 145100], [36667, 0, 0], [29989, 1, 9900], [48476, 10, 577200], [46132, 12, 504400], [44851, 3, 213100], [47986, 3, 119800], [43359, 4, 222000], [51143, 4, 300000], [51927, 3, 160900], [46252, 4, 225900], [50418, 4, 170600], [58824, 4, 236300], [55160, 10, 484100], [46571, 6, 338600], [48014, 5, 222300], [46017, 7, 256351], [44983, 2, 62600], [53342, 9, 462600], [58020, 8, 479854], [51807, 6, 348300], [55586, 4, 187800], [63913, 6, 221700], [53057, 2, 52000], [50494, 0, 0], [70941, 1, 29800], [61803, 11, 287096], [69196, 4, 272000]]},
+  {name:"상시_전환_닥터라인_마그네슘_논타겟_구매", data:[[64769, 4, 197400], [76673, 3, 214700], [66105, 2, 104600], [63270, 1, 79000], [74832, 0, 0], [55173, 2, 58000], [32413, 0, 0], [28929, 2, 116000], [29887, 2, 104600], [29525, 0, 0], [24015, 0, 0], [34378, 0, 0], [30682, 3, 188600], [32822, 2, 104600], [25166, 0, 0], [19001, 0, 0], [20492, 0, 0], [15645, 0, 0], [21956, 0, 0], [19945, 2, 141400], [21501, 0, 0], [18155, 1, 27800], [19975, 0, 0], [19345, 1, 121400], [19020, 1, 82200], [23721, 0, 0], [20813, 0, 0], [19934, 0, 0], [5570, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [27656, 6, 327600], [34335, 0, 0], [19670, 0, 0], [22040, 0, 0], [21836, 6, 327200], [19568, 0, 0], [20985, 2, 58000], [15493, 0, 0], [20135, 1, 29700], [22729, 0, 0], [19482, 0, 0], [18233, 2, 55537], [18615, 2, 58000], [25283, 4, 452200], [18640, 0, 0], [16959, 0, 0], [19052, 0, 0], [23406, 3, 134600], [40871, 0, 0]]},
+  {name:"상시_전환_닥터라인_징크키즈_논타겟_구매", data:[[0, 0, 0], [36061, 0, 0], [70155, 8, 427800], [45861, 4, 109600], [55990, 3, 141800], [49770, 1, 33000], [54261, 6, 282800], [48200, 2, 55000], [48922, 3, 236200], [47681, 6, 174800], [45145, 2, 55000], [54616, 2, 39960], [51192, 5, 335300], [52486, 0, 0], [38969, 0, 0], [30031, 0, 0], [29571, 4, 164200], [25051, 1, 31300], [31434, 1, 54000], [28496, 0, 0], [30010, 0, 0], [32584, 0, 0], [29400, 2, 96100], [39995, 0, 0], [43916, 0, 0], [56079, 2, 55600], [54280, 0, 0], [50747, 1, 26900], [9110, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]},
+  {name:"상시_전환_닥터라인_밀크씨슬_논타겟_구매", data:[[144129, 44, 633600], [149505, 47, 992900], [141976, 45, 772400], [139591, 43, 809600], [167640, 22, 316800], [50313, 0, 0], [0, 0, 0], [0, 1, 31300], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]},
+  {name:"파트너십_전환_비포락토_덴틱스_논타겟_구매", data:[[18667, 0, 0], [22754, 0, 0], [15253, 0, 0], [17008, 0, 0], [26770, 0, 0], [20174, 0, 0], [20281, 0, 0], [20239, 0, 0], [21043, 0, 0], [17960, 4, 437200], [13421, 0, 0], [26027, 0, 0], [30538, 1, 31300], [58656, 0, 0], [42288, 3, 99400], [31664, 0, 0], [31059, 0, 0], [23422, 0, 0], [33673, 0, 0], [33685, 0, 0], [23819, 0, 0], [27749, 0, 0], [32591, 0, 0], [31602, 0, 0], [26752, 0, 0], [37272, 2, 130000], [34953, 0, 0], [27699, 2, 54000], [13971, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]},
+  {name:"파트너십_전환_닥터라인_하이드레이션_논타겟_구매", data:[[27207, 0, 0], [36164, 0, 0], [28960, 0, 0], [21353, 0, 0], [28651, 0, 0], [31100, 1, 32000], [22793, 2, 182000], [21806, 0, 0], [19080, 0, 0], [18437, 0, 0], [12910, 0, 0], [22877, 0, 0], [18948, 0, 0], [34334, 0, 0], [33674, 1, 90900], [21037, 0, 0], [16420, 0, 0], [18214, 0, 0], [24427, 2, 132500], [23214, 0, 0], [21703, 0, 0], [18129, 0, 0], [16866, 0, 0], [5032, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [24511, 2, 53800], [34729, 0, 0], [34470, 0, 0], [20963, 0, 0], [21998, 3, 151500], [20668, 0, 0]]},
+  {name:"파트너십_전환_닥터라인_맥스투퍼데이_논타겟_구매", data:[[23303, 2, 50000], [16907, 2, 59600], [17315, 1, 147400], [15404, 0, 0], [23729, 0, 0], [19870, 0, 0], [23183, 0, 0], [20209, 1, 35800], [19664, 0, 0], [18228, 0, 0], [14928, 0, 0], [22142, 0, 0], [20963, 1, 157000], [23300, 1, 31300], [20315, 0, 0], [18615, 0, 0], [18288, 0, 0], [16243, 0, 0], [23126, 0, 0], [20107, 0, 0], [20018, 0, 0], [20067, 0, 0], [18832, 0, 0], [6151, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [13525, 1, 76000], [34351, 3, 84600], [34109, 2, 108500], [34481, 2, 114000], [20911, 1, 78000], [20451, 6, 356800], [38236, 0, 0]]},
+  {name:"상시_전환_닥터라인_하이드레이션_논타겟_구매", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [13429, 0, 0], [35144, 0, 0], [27114, 0, 0], [20018, 0, 0], [19294, 0, 0], [17312, 0, 0], [23153, 0, 0], [11685, 0, 0], [0, 0, 0], [10105, 0, 0], [29790, 0, 0], [21926, 0, 0], [12513, 0, 0], [17933, 0, 0], [16618, 0, 0], [14823, 1, 26900], [3122, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]},
+  {name:"상시_전환_닥터라인_프로폴리스_논타겟_구매", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [10705, 1, 25500], [13959, 0, 0], [13526, 0, 0], [16542, 0, 0], [14908, 1, 130800], [16223, 0, 0], [16811, 0, 0], [13849, 0, 0], [14108, 0, 0], [12506, 3, 45600], [18572, 0, 0], [16336, 0, 0], [14724, 1, 47400], [4666, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]},
+  {name:"상시_전환_닥터라인_코큐텐_논타겟_구매", data:[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [11787, 0, 0], [14609, 0, 0], [11927, 0, 0], [17022, 0, 0], [14741, 0, 0], [15232, 1, 54400], [16120, 0, 0], [14713, 0, 0], [4978, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]},
+];
+
+/* ---- Real ad creative thumbnails (Meta CDN, fetched live — links may expire after a few days) ---- */
+const CREATIVE_IMG = {
+  '상시_전환_비포락토키즈_image_bifolactokids-2': 'https://scontent-ord5-1.xx.fbcdn.net/v/t45.1600-4/570141902_122232859694102805_1322677157924739766_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=vX_o-pUCmzQQ7kNvwHS98ba&_nc_oc=AdrsFGcz0J5tyUHoZP4v6ySaq0dc-6ksDon7ehMn5ehDpJFGmq26ma3eKHOG9jrcYYM&_nc_zt=1&_nc_ht=scontent-ord5-1.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQLU3g4cwzTDP6PuJXclaz3AFaAGGsenF8SvDzgSiNQSJDkplJwIMkgRBur1rAc0Xu4TluXd9X5naQ&oh=00_AQEYEcqxtmqav4mQJELarBJaanyERt2CO9oIy2u3R509Mw&oe=6A940F31',
+  '파트너십_전환_비포락토_전체_partnership_snow-8': 'https://scontent-ord5-2.xx.fbcdn.net/v/t15.5256-10/757128094_1669053557729340_441564861016652636_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=cwg0ZUcCQGgQ7kNvwGxCmTp&_nc_oc=AdozTrzGElX4bPDBQt4Q8fcwWcFN-0nGT0c47bIG8gFlyEjW5k27zc8sjG_thDYD1yU&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQIqgr1Ww0JhUBFFWTA-pht7KAvCR7tsczwaEWNTcTk28XV2mcfznKPqJWivm1ecEV-NBx1_UAulsg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQGYuBXtV7PJF4Y_fNKsYOYaOWYU9h3mIkr7HvTJ9gAodw&oe=6A941781',
+  '파트너십_전환_비포락토_전체_partnership_snow-9': 'https://scontent-ord5-1.xx.fbcdn.net/v/t15.5256-10/756224598_1717892539335847_7553902779484109498_n.jpg?_nc_cat=106&ccb=1-7&_nc_ohc=3mTcLY6XPZoQ7kNvwFAIsF4&_nc_oc=AdoCnXV4PheVzgtgx2qLWVOu8J7UmQBVMFraHyvXYJWeLaZNdExocrru1vtpSZ-zKj4&_nc_zt=23&_nc_ht=scontent-ord5-1.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQJPu6BEIQGqGsR5r-aCUSfzJROOzbbyyTekTRag6n7Dfe3MPUKpKGpkz-fOab2Yqb9tXb1ayb_8yg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQFBBA7lf7OQq2vKAibXPwxF4iJqhrMMpJQoU7Pak_Ws_g&oe=6A93FDC2',
+  '251020-유소아-헤모키즈-빨간병철분제': 'https://scontent-ord5-1.xx.fbcdn.net/v/t45.1600-4/567266382_3651828994951910_8252014204797438438_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=_rboYTkpvyAQ7kNvwF0E41V&_nc_oc=Adq8OFvfhgOTMfA5ATuItOlujr_vhAgbX9Wjk3KYBog2HufwIor7ij7esTSPPb5xevg&_nc_zt=1&_nc_ht=scontent-ord5-1.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQL3qpPUOOgxGrgBRkyLE5HNlFXWFnoVl0cb9_FL1iOE7tlpLQ2r00rk_L7c8Zmgz5uTJTbmQ67tOg&oh=00_AQFn-wudXf-_c9aTpGDie1pwr06jMkcx-nGgtwnJm8fusQ&oe=6A940057',
+  '상시_전환_비포락토_비포락토100_image_BIFOLACTO100-8': 'https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/639061543_3799368313531310_5019154413785713065_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=2Q054K2pp5sQ7kNvwGaSq_O&_nc_oc=Adpjz7MPzxHOMBywEIyR9UjvylenPJFYbUfCyLtQiRMPGGQylpdZCoeC76qMmiH0-Q8&_nc_zt=1&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQIya8Pmjk3oH-po9BQk9Cg26zJ5Ct1rpdKj7g5fqolBe0rRmKfCw2dqVoXbQwtBnT7Vd3bwzpecfA&oh=00_AQH-T99Wn-OxWVRAjZwoGzlc3a5wFExnZljGGuQSsYutEw&oe=6A940E06',
+  '파트너십_전환_닥터라인_헤모퀸즈 플러스_partnership_HemoQueens-2': 'https://scontent-ord5-2.xx.fbcdn.net/v/t15.5256-10/753812447_1065963652676905_5309665966997088776_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=H8yhi2twmbgQ7kNvwH7AWIM&_nc_oc=AdognsKnXix4J7UBKmejoxdPeo_pIadd0ynQEBX2-PPziRFVpW0Lw68rcVTfwPsfA7s&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQIP1SJHAOpX0R7bOfnDy2kjq5nhZUPKINrnpVQrPbTXyPfNHVr7OA9q3Rj-yC6K2u68XzORopLk2Q&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQF0cg6iy58SWgM5F-t5PdQ2Xc4OUuNw_Z-bTbvNvRVN6Q&oe=6A940A9A',
+  '상시_전환_비포락토_비포락토100_image_BIFOLACTO100-4': 'https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/662141441_3836891899778951_2732719011523064101_n.png?stp=dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=X8fYdOQC-RcQ7kNvwGUuG1n&_nc_oc=AdpPPwAkNpYXuNwr5HS9qVTHmDnowyxhkYkzrv1aTSYDFxukQlTy3qqThGnwPKjeb2Q&_nc_zt=1&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQKjPXWEGq7ihReDZCGdzRaqEUxTJlGxtqj8tCOOBzbVX47izag-WYmx5A1ArtcGCBEt6cPvEKBARQ&oh=00_AQGE9bPzyhzyfOvBaPLUMV4DNyA-oF1AwAitUVFhXTWGrw&oe=6A942675',
+  '상시_전환_닥터라인_유소아패키지_image_KIDS SET-3': 'https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/567429866_3651821621619314_3349526326990993699_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=-MquuxlGDBkQ7kNvwFELG2E&_nc_oc=AdobujjjZvIHh1XH9dSyL_olJvdsJfDbLaLBLj5f1yLIQA107NcDNl9uh5YPxRJM-zg&_nc_zt=1&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQKWBfCTAnohcSckJlpTUAsApoVr4XFHFR6f4EGgm4G3zfnG0tRX8N1baaJ_tPc3vC71TPSpxfm5kQ&oh=00_AQHuQwZuaLjhYozz_l6tWNqNkes1K4K8fDS4dpUP0w4gIA&oe=6A942189',
+  '파트너십_전환_닥터라인키즈_헤모키즈_partnership_HEMOKIDS-5': 'https://scontent-ord5-2.xx.fbcdn.net/v/t15.5256-10/709921226_1296962459294186_5584415103810587551_n.jpg?_nc_cat=100&ccb=1-7&_nc_ohc=aDoeildYa6gQ7kNvwGx5iQx&_nc_oc=AdoJ0kAQ3MDNYECvTU1z6_lqJuNt55TpMsOm-Oq-91lzpqCtUAgrYd4h3DOIC4PpQGI&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQKsDOYQg5l6jt0QNcDshkGAyAluwlmM3AUZyMTB5DtaghxRVA-unfj55TcLbeTkDIOjxFagEoBEmw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQHUUjPjTbKvoaG62gchZorzV16KcKRr_Qukh8kc_Ml2sQ&oe=6A93F9F4',
+  '파트너십_전환_닥터라인키즈_헤모키즈_partnership_HEMOKIDS-2': 'https://scontent-ord5-2.xx.fbcdn.net/v/t15.5256-10/707580899_1513903017195327_3471836394000705063_n.jpg?_nc_cat=107&ccb=1-7&_nc_ohc=JoEe31QVsnUQ7kNvwEiUeIf&_nc_oc=AdpFA3mRR9sXUzDTs01YKjVZcDkYz_pbrloD_pZA7q96UfTR4zWVEhjOyNUfILtyRVA&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQIW4prsm-B1EezQkbH7EcIAk-fsZHDLZsB7S211W3NXUk-dZi9UpECKfSsXYqTw5yN5Oin3we94xg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQHxzIkJtK7-mNzvtwAHWmENEl9hSVWodHUq1Whe0mZ_dw&oe=6A9403BC',
+  '상시_전환_닥터라인 성인_리포좀비타민C_image_LIPOSOME Vitamin C-3': 'https://scontent-ord5-1.xx.fbcdn.net/v/t45.1600-4/778157312_2858691897831166_8625822845096464069_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=TBPbOH9yMeUQ7kNvwEz5MYe&_nc_oc=AdrONb1nCKvH2Jh2uauVywau9NfeL2yf7JACrjL_8qJq-s6q8YY7UVjwxE4LzP0iNPk&_nc_zt=1&_nc_ht=scontent-ord5-1.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQJ6DUj1RrT0fbT0VbVn-UGYX9Ps2Z1-Tnw5j5UnCMSGwcbiKvmyVUqVX6k6joLA6UciGLzpBPE3Zg&oh=00_AQGd3_itljttadgkRaiIKcmncKQV3R1_5bk81QpEK2lKpg&oe=6A940346',
+  '파트너십_전환_비포락토_전체_partnership_snow-10': 'https://scontent-ord5-2.xx.fbcdn.net/v/t15.5256-10/756790123_1773823920465831_1093957822641964305_n.jpg?_nc_cat=104&ccb=1-7&_nc_ohc=Dj6aunHZYUsQ7kNvwEz-aDN&_nc_oc=AdpakuyZlY-BxUfrY6IEOQpQ_AY9WTtR4fHCxVK2MS2NC9HQGCD988wQhnfvjwRpwPQ&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQJwHXiEiPldtHkfT4_pYfX1ANK9jM-4sgQvO1TrDfj3d36TuJbgdHEA4eNfxk5bI9sCvGNc8EsXyQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQHlDph8qTQ3lahMlSCKB_aFu2DBAVztlR_Ojyf-QIZgfA&oe=6A93FF04',
+  '헤모키즈100만병_전환(카탈로그)_STORY_HEMOKIDS100-4_스토리랜딩': 'https://scontent-ord5-1.xx.fbcdn.net/v/t45.1600-4/774105728_2852650495101973_6194026387668369458_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=U17FHX4oPNQQ7kNvwFBvTcd&_nc_oc=AdrvevhiZiTyG6njmLQGVS71wBceHHcuA66Jlc-SPCRrZ3RkgI_dxcNFOEZsExbNtb4&_nc_zt=1&_nc_ht=scontent-ord5-1.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQL-4zO58uOR9XCZAs8M49BQtpdYuRTbkJvTFjWxpagZJScVQaxCpqj8pLDALaoDXOiQ5E7_GgkoCQ&oh=00_AQFuH4ZRI33znA2PFYwUNVgJ3r2leohSlm0695ZhriZJ7Q&oe=6A9409F9',
+  '헤모키즈100만병_전환(카탈로그)_video_HEMOKIDS100': 'https://scontent-ord5-1.xx.fbcdn.net/v/t15.5256-10/768371580_1048240494649427_4178887375548432543_n.jpg?_nc_cat=109&ccb=1-7&_nc_ohc=NluqcT_-EfoQ7kNvwH50QoN&_nc_oc=Adr1m-dqGVyktxkUHLZyoo52m0ki5wmxM_7TYXEehYWgruEDleficjHGFY0X--yND9Y&_nc_zt=23&_nc_ht=scontent-ord5-1.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQJZ_eyUgKJU9lRzQ4_3pFsoAboMywBTzTwnOBPSbAsXEHh2ta41PNvK675ybBXUaVcpWFpAcVXwYg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQHlz2MTr9zasCo8Fv6CHMfKjmLn6lrFeCUWA4yIf20DQA&oe=6A940498',
+  '헤모키즈100만병_전환(카탈로그)_STORY_HEMOKIDS100-1_스토리랜딩': 'https://scontent-ord5-1.xx.fbcdn.net/v/t45.1600-4/773075456_2852563915110631_6605149342770982590_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=-Mt3gdUP0tIQ7kNvwGyS0zO&_nc_oc=AdpcHkUMksWlUaGa4yhu0sJw8mBLEyl7BmTEQTK9TLpDOiZb5a_GM0XwjV117kD-KbU&_nc_zt=1&_nc_ht=scontent-ord5-1.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQIQ4jJVKPAAcNZSdwIThZplxmgaV4xZecNO-_sXBjrviV6Vq2re1Uauky8AZgOG68yBCwwjZRYrIw&oh=00_AQE6Cc3T2HM94Wvb1d4UPuqcqNZMITC-nI6VFnZ7k5qqig&oe=6A9401FD',
+  '라운지 리뉴얼_전환_전체_image_lounge_HEMOKIDS-1': 'https://scontent-ord5-1.xx.fbcdn.net/v/t45.1600-4/741910261_2820684564965233_5388495447910965865_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=D_asZCM3VI4Q7kNvwGGDpRt&_nc_oc=AdqWGDRux2_toQcq86D0UXmQhbBbfWYzpy_CXag9Lp1VSwdtULBrlUjGl5Tnei_LCyo&_nc_zt=1&_nc_ht=scontent-ord5-1.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQJoRQ5DwNtEptkq_XtL45Pw3YgEekEfczzESAeuQTunE2HHvB18qIfme9NcwolHRjMZcAuo6TIUHQ&oh=00_AQHIIyErf2laiU3FcjajYOf8_uuxfbh9rS53lFIrNDdHbA&oe=6A93FB46',
+  '라운지 리뉴얼_전환_전체_image_lounge_HEMOKIDS-3': 'https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/744823741_2823197701380586_163088165667226657_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=Q2Ol44qXYqgQ7kNvwFHLDA-&_nc_oc=AdooQGcRhRI6QUqUNpBPL0vXxxS12j1Gch79Q1X28_CFi1IIbjj2BnAEy8Pu_4-7b94&_nc_zt=1&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQKfnV2J0WJNKhyFDPWTXcZhPma3T4zsVuK3ElyTPwumNUsaQ0zTRVp9BjEvu5_BA_EZ2UveJoSYsg&oh=00_AQGd-NSJJ9vPUVQrSSZ8UixabLiew3HUv2gugst3HF8bHw&oe=6A9423E7',
+  '브랜드위크_전환(카탈로그)_비포락토_image_STORY_brandweek-8': 'https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/763578067_2846043072429382_745803488859990922_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=OF7h5BYTNngQ7kNvwHFZpNW&_nc_oc=AdosYqtcOBa8EzZbvwmx8_fxacLNLBB0FBRO9Iqal6hXYJ3Vqsy93Z5GHVupRKR_SXg&_nc_zt=1&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQLrqwKOo5r0js37KIQJ6E1t-u3VuSlm-2Av_dx2IUYP2wm-fWg9IX8BzCnW7qTE967gaQ6E6UB0WA&oh=00_AQFsgtg-5QcFEjOBwypodoK7ck1y51SLANdm3roRFBbcIQ&oe=6A942733',
+  '헤모키즈100만병_전환(카탈로그)_STORY_HEMOKIDS100-3_스토리랜딩': 'https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/773302519_2852649938435362_395285473338882091_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=eb5rafqai5YQ7kNvwEI6XNC&_nc_oc=AdrtkbF7vIgW8cMj19uHBXJnUCUadlBJxdvtFtnI6yO33NyWz8ZG-vU1wfUHj4XaYVs&_nc_zt=1&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQJT5j1_73HYh8pFvod_VHtKUbmJCmsohT0OP-orzwakva51y0bpVGJ-XD3j078rIMUGNg_jiPTFEQ&oh=00_AQE9F5KrYs9cBnYpryYN28x5VRyxBpF0ZuI-UBGUin9j5A&oe=6A940AE6',
+  '브랜드(앵콜)_전환(카탈로그)_비포락토_image_STORY_brand(encore)-17': 'https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/768374169_2849680932065596_728895583190691963_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=ccghz0xn4scQ7kNvwHHeNix&_nc_oc=Adqq_Up2HI4rp_sr9q5F_w2wHCJhafwttXRqm2UqNdikNaYtl5c75_ELhiix9gp4hqE&_nc_zt=1&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQKqWNVY-FNmiX0pxdsYULrLGFOd9p-3B9gtt1LlEhI33hmqYFk1ijREXHH_nA0U6QPaRw0lLnd5GQ&oh=00_AQHCB7XMxysSbj4GNfk7XLNKSdT-POZy5zl48aclOVUCeg&oe=6A93F577',
+  '브랜드위크_전환(카탈로그)_비포락토_image_STORY_brandweek-5': 'https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/767272657_2846035105763512_4077891472778886641_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=4TRYwgpl5vIQ7kNvwEBzPa-&_nc_oc=AdrfjuBTaHcZmrh3dJCHV43WIL-0BQGTKDt1gXvUlecIO5m0KwGBYy6eUFMRlCuP92s&_nc_zt=1&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQJK1rOYNxdpz21ZQ8dBDTmpGzCFxJ9O15EFL07Lk7BxqMBTQ9N6_uC-4AMsQhpsN4W-nH_QhoPOZQ&oh=00_AQG-qduSMIZfnl23NicPlBHuKMdGlb4U6g1fraX5SYL87A&oe=6A941B8C',
+  '브랜드(앵콜)_전환(카탈로그)_비포락토_image_STORY_brand(encore)-16': 'https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/770236310_2849680398732316_6650004464977959957_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=EnHZxJSAlJcQ7kNvwFhPBo3&_nc_oc=AdpAw7zwzgQp2V22mzIC-nQinZqQ4ywTSYu4aJl00SvdJKAHrFFkxkkbdmCl3xm4hv8&_nc_zt=1&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQI5SzT5pCWNdIHNUQPnpx4kbnt0P0r7dKNeTPndn1qbhCKsVtPRQGXgHRB6venKINMma4QMsaapOQ&oh=00_AQE-DmSENihrabwVK4vpJ6sky5IY5--BfRO6P1L48c5i5A&oe=6A93F6B7',
+  '이뮨 리뉴얼_전환(카탈로그)_닥터라인 성인_image_STORY_IMMUNE-7': 'https://scontent-ord5-1.xx.fbcdn.net/v/t45.1600-4/774777825_2853703524996670_7771134591797201601_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=HbkfrqfX5aEQ7kNvwEZ7OJd&_nc_oc=Ado8Q2XBx5aNSp9vFLWKSBJmDMANqTmm9iqatC5weNiJ8cFvWUz5Cw0KG428o3dveVk&_nc_zt=1&_nc_ht=scontent-ord5-1.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQJzehz4QtqVjm_ic70t-x3vmKCOyheBy7ElmKa9hYSklkUYaPyi-xmAzAiSoo0zUuMKQr9NucCHDw&oh=00_AQFm0N3mQfjt0bRq_He-v9GXgda_4bKn0R0Jl7tFgtoVaA&oe=6A941A71',
+  '브랜드(앵콜)_전환(카탈로그)_비포락토_image_STORY_brand(encore)-14': 'https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/768571546_2849679018732454_8242143930396968133_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=Q9rrRBi5EqgQ7kNvwGbEY6e&_nc_oc=AdpyWESTTgCgxUQ3RM-25LEWJZpIH8yU-1s7AQLcZ91m0pWjnxQTux-69cTKIc4yiY8&_nc_zt=1&_nc_ht=scontent-ord5-2.xx&edm=AEZPnVgEAAAA&_nc_gid=R6n21hqdzNOfnVvRsYjpjg&_nc_tpa=Q5bMBQKbTvrNN0wyAXluSZfrOj1LhQv_rE3k8N9m1OrmQQxxYzhmYFdP_T_qTgNNj0EGQvCx0BGIpt5gTg&oh=00_AQFImpMT6ykujfnyf7-l2EIMcBooq2tcUX6Shy2J9ZN0LQ&oe=6A9426AE',
 };
 
 /* ---- Creative-level (30 days, fixed) ---- */
@@ -759,8 +818,8 @@ function renderBarV(elId, labels, values, opts) {
   opts = opts || {};
   const color = opts.color || css('--series-1');
   const fmt = opts.fmt || fmtNum;
-  const W = opts.w || 520, H = opts.h || 170;
-  const padL = 4, padR = 4, padT = 10, padB = 26;
+  const W = opts.w || 520, H = opts.h || 190;
+  const padL = 4, padR = 4, padT = 22, padB = 26;
   const plotW = W - padL - padR, plotH = H - padT - padB;
   const max = Math.max(...values, 1) * 1.15;
   const n = values.length;
@@ -771,6 +830,7 @@ function renderBarV(elId, labels, values, opts) {
     const y = padT + plotH - (plotH * i/2);
     svg += `<line class="gridline" x1="${padL}" x2="${W-padR}" y1="${y}" y2="${y}" />`;
   }
+  svg += `<text class="axis-label" x="${padL}" y="${padT-8}" text-anchor="start">최고 ${fmt(Math.max(...values))}</text>`;
   svg += `<line class="baseline" x1="${padL}" x2="${W-padR}" y1="${padT+plotH}" y2="${padT+plotH}" />`;
   const step = plotW / n;
   values.forEach((v, i) => {
@@ -780,7 +840,7 @@ function renderBarV(elId, labels, values, opts) {
     svg += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${bh.toFixed(1)}" rx="4" ry="4" fill="${color}" class="bar" data-i="${i}" style="cursor:pointer" />`;
     const showLabel = (i===0 || i===n-1 || v===Math.max(...values));
     if (opts.showLabels !== false && showLabel) {
-      svg += `<text class="bar-label" x="${(x+barW/2).toFixed(1)}" y="${(y-5).toFixed(1)}" text-anchor="middle">${fmt(v)}</text>`;
+      svg += `<text class="bar-label" x="${(x+barW/2).toFixed(1)}" y="${(y-6).toFixed(1)}" text-anchor="middle">${fmt(v)}</text>`;
     }
     if (n <= 13 || i % Math.ceil(n/10) === 0 || i===n-1) {
       svg += `<text class="cat-label" x="${(x+barW/2).toFixed(1)}" y="${H-8}" text-anchor="middle">${labels[i]}</text>`;
@@ -807,8 +867,8 @@ function renderLine(elId, labels, values, opts) {
   opts = opts || {};
   const color = opts.color || css('--series-1');
   const fmt = opts.fmt || fmtNum;
-  const W = opts.w || 520, H = opts.h || 170;
-  const padL = 4, padR = 30, padT = 16, padB = 26;
+  const W = opts.w || 520, H = opts.h || 190;
+  const padL = 4, padR = 34, padT = 22, padB = 26;
   const plotW = W - padL - padR, plotH = H - padT - padB;
   const max = Math.max(...values) * 1.15;
   const min = Math.min(0, Math.min(...values));
@@ -818,16 +878,19 @@ function renderLine(elId, labels, values, opts) {
   const xFor = i => padL + i*xStep;
   let path = '';
   values.forEach((v,i)=>{ path += (i===0?'M':'L') + xFor(i).toFixed(1) + ' ' + yFor(v).toFixed(1) + ' '; });
+  let areaPath = path + `L ${xFor(n-1).toFixed(1)} ${(padT+plotH).toFixed(1)} L ${xFor(0).toFixed(1)} ${(padT+plotH).toFixed(1)} Z`;
   let svg = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="line chart">`;
   for (let i=0;i<=2;i++) {
     const y = padT + plotH - (plotH*i/2);
     svg += `<line class="gridline" x1="${padL}" x2="${W-padR}" y1="${y}" y2="${y}" />`;
   }
+  svg += `<text class="axis-label" x="${padL}" y="${padT-8}" text-anchor="start">최고 ${fmt(Math.max(...values))}</text>`;
   svg += `<line class="baseline" x1="${padL}" x2="${W-padR}" y1="${padT+plotH}" y2="${padT+plotH}" />`;
-  svg += `<path d="${path}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />`;
+  svg += `<path d="${areaPath}" fill="${color}" opacity="0.08" stroke="none" />`;
+  svg += `<path d="${path}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />`;
   values.forEach((v,i)=>{
     const isEnd = i===n-1;
-    const r = isEnd ? 4.5 : 3;
+    const r = isEnd ? 5 : 3.2;
     svg += `<circle cx="${xFor(i).toFixed(1)}" cy="${yFor(v).toFixed(1)}" r="${r}" fill="${color}" stroke="${css('--surface-1')}" stroke-width="2" class="dot" data-i="${i}" style="cursor:pointer" />`;
   });
   svg += `<text class="bar-label" x="${(xFor(n-1)+6).toFixed(1)}" y="${(yFor(values[n-1])+4).toFixed(1)}" text-anchor="start" style="fill:${color}">${fmt(values[n-1])}</text>`;
@@ -853,8 +916,8 @@ function renderLine(elId, labels, values, opts) {
 function renderRankBar(elId, items, opts) {
   opts = opts || {};
   const W = opts.w || 1100;
-  const rowH = 26, gap = 6;
-  const padL = 4, padR = 60, padT = 4, padB = 4;
+  const rowH = 30, gap = 8;
+  const padL = 4, padR = 70, padT = 4, padB = 4;
   const labelW = opts.labelW || 340;
   const plotW = W - padL - padR - labelW;
   const n = items.length;
@@ -869,10 +932,14 @@ function renderRankBar(elId, items, opts) {
     else if (d.roas >= ROAS_GOOD) color = css('--status-good');
     else color = css('--status-critical');
     const shortName = d.name.length > 30 ? d.name.slice(0,29)+'…' : d.name;
+    if (i % 2 === 1) {
+      svg += `<rect x="0" y="${y.toFixed(1)}" width="${W}" height="${rowH}" fill="${css('--gridline')}" opacity="0.35" />`;
+    }
+    svg += `<rect x="${padL+labelW}" y="${y+3}" width="${(plotW).toFixed(1)}" height="${rowH-6}" rx="5" ry="5" fill="${css('--gridline')}" opacity="0.5" />`;
     svg += `<text class="cat-label" x="${padL}" y="${y+rowH/2+4}" text-anchor="start">${shortName}</text>`;
-    svg += `<rect x="${padL+labelW}" y="${y+3}" width="${bw.toFixed(1)}" height="${rowH-6}" rx="4" ry="4" fill="${color}" class="rbar" data-i="${i}" style="cursor:pointer" />`;
+    svg += `<rect x="${padL+labelW}" y="${y+3}" width="${bw.toFixed(1)}" height="${rowH-6}" rx="5" ry="5" fill="${color}" class="rbar" data-i="${i}" style="cursor:pointer" />`;
     const roasLabel = d.roas===null||d.roas===undefined ? (d.note||'측정불가') : ('ROAS ' + fmtRoas(d.roas));
-    svg += `<text class="bar-label" x="${(padL+labelW+bw+6).toFixed(1)}" y="${y+rowH/2+4}" text-anchor="start" style="fill:${color}">${roasLabel}</text>`;
+    svg += `<text class="bar-label" x="${(padL+labelW+bw+8).toFixed(1)}" y="${y+rowH/2+4}" text-anchor="start" style="fill:${color}">${roasLabel}</text>`;
   });
   svg += `</svg>`;
   const el = document.getElementById(elId);
@@ -985,10 +1052,18 @@ function renderTrend(range) {
 const TOP5 = [...topCreatives].sort((a,b)=>b.roas-a.roas).slice(0,5);
 const MEDALS = ['🥇','🥈','🥉','🎖️','🎖️'];
 
+function creativeThumbHtml(name, size) {
+  const url = CREATIVE_IMG[name];
+  const cls = size === 'sm' ? 'creative-thumb creative-thumb-sm' : 'creative-thumb';
+  if (!url) return `<div class="${cls} broken"><span>🖼</span></div>`;
+  return `<div class="${cls}"><img src="${url}" alt="${name}" loading="lazy" onerror="this.parentElement.classList.add('broken'); this.parentElement.innerHTML='&lt;span&gt;🖼&lt;/span&gt;';" /></div>`;
+}
+
 function renderTop5() {
   const grid = document.getElementById('top5Grid');
   grid.innerHTML = TOP5.map((d,i)=>`
     <div class="top5-card">
+      ${creativeThumbHtml(d.name)}
       <div class="rank-badge">#${i+1}</div>
       <div class="medal">${MEDALS[i]}</div>
       <div class="roas-big">${fmtRoas(d.roas)}<span class="u"> ROAS</span></div>
@@ -1005,60 +1080,130 @@ function renderTop5() {
   `).join('');
 }
 
-/* ============================= PERIOD-DRIVEN (요약/캠페인/애드셋) ============================= */
-function renderPeriod(period) {
-  const kpi = KPI_BY_PERIOD[period];
-  const periodLabel = {'7':'최근 7일','14':'최근 14일','30':'최근 30일'}[period];
-
-  document.getElementById('kpiGridMain').innerHTML = `
-    <div class="kpi-card"><div class="label">총 지출</div><div class="value">${fmtWon(kpi.spend)}</div><div class="foot">구매 최적화 캠페인 ${kpi.campCount}개 기준 · ${periodLabel}</div></div>
-    <div class="kpi-card"><div class="label">구매 (공유항목)</div><div class="value">${fmtNum(kpi.purch)}건</div><div class="foot">${periodLabel} 합계</div></div>
-    <div class="kpi-card"><div class="label">전환값 (공유항목)</div><div class="value">${fmtWon(kpi.value)}</div><div class="foot">평균 구매가 ≈ ${fmtWon(kpi.value/kpi.purch)}</div></div>
-    <div class="kpi-card"><div class="label">블렌디드 ROAS</div><div class="value accent-good">${fmtRoas(kpi.roas)}</div><div class="foot">손익분기(100%) 대비 +${Math.round((kpi.roas-1)*100)}%p</div></div>
-  `;
-  document.getElementById('kpiGridSecondary').innerHTML = `
-    <div class="kpi-card"><div class="label">계정 전체 지출</div><div class="value">${fmtWon(kpi.acctTotal)}</div><div class="foot">트래픽/혼합 캠페인 포함</div></div>
-    <div class="kpi-card"><div class="label">활성 캠페인</div><div class="value">${kpi.campCount}개</div><div class="foot">구매 최적화 기준, ${periodLabel}</div></div>
-    <div class="kpi-card"><div class="label">활성 애드셋</div><div class="value">20개</div><div class="foot">지출 상위 기준</div></div>
-    <div class="kpi-card"><div class="label">활성 소재</div><div class="value">150개</div><div class="foot">성과 있는 소재 65개(ROAS≥200%)</div></div>
-  `;
-
-  const campSorted = [...CAMPAIGNS_BY_PERIOD[period]].sort((a,b)=>b.spend-a.spend);
-  renderRankBar('campaignChart', campSorted, {labelW:340});
-  fillTable('campaignTable', ['캠페인','지출','구매','전환값','ROAS'],
-    campSorted.map(d=>[d.name, fmtWon(d.spend), d.purch===null?'—':fmtNum(d.purch)+'건', d.value===null?'—':fmtWon(d.value), d.roas===null? (d.note||'—') : fmtRoas(d.roas)]));
-
-  const adsetSorted = [...ADSETS_BY_PERIOD[period]].sort((a,b)=>b.spend-a.spend);
-  renderRankBar('adsetChart', adsetSorted, {labelW:340});
-  fillTable('adsetTable', ['애드셋','지출','구매','전환값','ROAS'],
-    adsetSorted.map(d=>[d.name, fmtWon(d.spend), fmtNum(d.purch)+'건', fmtWon(d.value), fmtRoas(d.roas)]));
+/* ============================= DATE-RANGE PICKER (요약/캠페인/애드셋) ============================= */
+function aggregateSeries(seriesArr, fromIdx, toIdx) {
+  return seriesArr.map(s => {
+    let spend = 0, purch = 0, value = 0;
+    for (let i = fromIdx; i <= toIdx; i++) {
+      const row = s.data[i];
+      if (!row) continue;
+      spend += row[0]; purch += row[1]; value += row[2];
+    }
+    const roas = spend > 0 ? value / spend : null;
+    return { name: s.name, spend, purch, value, roas };
+  }).filter(d => d.spend > 0);
 }
 
-document.querySelectorAll('.period-select').forEach(sel => {
-  sel.addEventListener('change', (e) => {
-    const val = e.target.value;
-    document.querySelectorAll('.period-select').forEach(s => s.value = val);
-    renderPeriod(val);
+function quickRange(key) {
+  const last = DATES.length - 1;
+  switch (key) {
+    case '7':  return [DATES[Math.max(0, last - 6)], DATES[last]];
+    case '14': return [DATES[Math.max(0, last - 13)], DATES[last]];
+    case '30': return [DATES[Math.max(0, last - 29)], DATES[last]];
+    case 'jul': {
+      const julDates = DATES.filter(d => d.startsWith('2026-07'));
+      return [julDates[0], julDates[julDates.length - 1]];
+    }
+    case 'aug': {
+      const augDates = DATES.filter(d => d.startsWith('2026-08'));
+      return [augDates[0], augDates[augDates.length - 1]];
+    }
+    case 'all': return [DATES[0], DATES[last]];
+    default: return [DATES[0], DATES[last]];
+  }
+}
+
+function syncDateRangeUI(fromDate, toDate, activeChipKey) {
+  document.querySelectorAll('.date-range-wrap').forEach(wrap => {
+    const fromInput = wrap.querySelector('.date-from');
+    const toInput = wrap.querySelector('.date-to');
+    if (fromInput) fromInput.value = fromDate;
+    if (toInput) toInput.value = toDate;
+    wrap.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', !!activeChipKey && c.dataset.quick === activeChipKey));
+  });
+}
+
+let currentRange = null;
+function renderRange(fromDate, toDate) {
+  currentRange = [fromDate, toDate];
+  let fromIdx = DATES.indexOf(fromDate);
+  let toIdx = DATES.indexOf(toDate);
+  if (fromIdx === -1) fromIdx = 0;
+  if (toIdx === -1) toIdx = DATES.length - 1;
+  if (fromIdx > toIdx) { const t = fromIdx; fromIdx = toIdx; toIdx = t; }
+  const nDays = toIdx - fromIdx + 1;
+  const rangeLabel = `${DATES[fromIdx]} ~ ${DATES[toIdx]} (${nDays}일)`;
+
+  const campAgg = aggregateSeries(CAMPAIGN_DAILY, fromIdx, toIdx).sort((a,b)=>b.spend-a.spend);
+  const adsetAgg = aggregateSeries(ADSET_DAILY, fromIdx, toIdx).sort((a,b)=>b.spend-a.spend);
+
+  const totalSpend = campAgg.reduce((s,d)=>s+d.spend, 0);
+  const totalPurch = campAgg.reduce((s,d)=>s+d.purch, 0);
+  const totalValue = campAgg.reduce((s,d)=>s+d.value, 0);
+  const totalRoas = totalSpend > 0 ? totalValue / totalSpend : null;
+  const avgDailySpend = totalSpend / nDays;
+
+  document.getElementById('kpiGridMain').innerHTML = `
+    <div class="kpi-card"><div class="label">총 지출</div><div class="value">${fmtWon(totalSpend)}</div><div class="foot">구매 최적화 캠페인 ${campAgg.length}개 · ${rangeLabel}</div></div>
+    <div class="kpi-card"><div class="label">구매 (공유항목)</div><div class="value">${fmtNum(totalPurch)}건</div><div class="foot">선택 기간 합계</div></div>
+    <div class="kpi-card"><div class="label">전환값 (공유항목)</div><div class="value">${fmtWon(totalValue)}</div><div class="foot">평균 구매가 ≈ ${totalPurch>0?fmtWon(totalValue/totalPurch):'—'}</div></div>
+    <div class="kpi-card"><div class="label">블렌디드 ROAS</div><div class="value ${totalRoas!==null && totalRoas>=ROAS_GOOD ? 'accent-good' : 'accent-critical'}">${totalRoas===null?'—':fmtRoas(totalRoas)}</div><div class="foot">손익분기(100%) 대비 ${totalRoas===null?'—':(totalRoas>=1?'+':'')+Math.round((totalRoas-1)*100)+'%p'}</div></div>
+  `;
+  document.getElementById('kpiGridSecondary').innerHTML = `
+    <div class="kpi-card"><div class="label">일 평균 지출</div><div class="value">${fmtWon(avgDailySpend)}</div><div class="foot">${nDays}일 평균</div></div>
+    <div class="kpi-card"><div class="label">활성 캠페인</div><div class="value">${campAgg.length}개</div><div class="foot">선택 기간 내 지출 발생 기준</div></div>
+    <div class="kpi-card"><div class="label">활성 애드셋</div><div class="value">${adsetAgg.length}개</div><div class="foot">선택 기간 내 지출 발생 기준</div></div>
+    <div class="kpi-card"><div class="label">활성 소재</div><div class="value">150개</div><div class="foot">성과 있는 소재 65개(ROAS≥200%, 최근 30일 고정)</div></div>
+  `;
+
+  renderRankBar('campaignChart', campAgg, {labelW:340});
+  fillTable('campaignTable', ['캠페인','지출','구매','전환값','ROAS'],
+    campAgg.map(d=>[d.name, fmtWon(d.spend), fmtNum(d.purch)+'건', fmtWon(d.value), d.roas===null?'—':fmtRoas(d.roas)]));
+
+  renderRankBar('adsetChart', adsetAgg, {labelW:340});
+  fillTable('adsetTable', ['애드셋','지출','구매','전환값','ROAS'],
+    adsetAgg.map(d=>[d.name, fmtWon(d.spend), fmtNum(d.purch)+'건', fmtWon(d.value), d.roas===null?'—':fmtRoas(d.roas)]));
+}
+
+document.querySelectorAll('.date-range-wrap').forEach(wrap => {
+  wrap.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const [f, t] = quickRange(chip.dataset.quick);
+      syncDateRangeUI(f, t, chip.dataset.quick);
+      renderRange(f, t);
+    });
+  });
+  wrap.querySelectorAll('.date-input').forEach(inp => {
+    inp.addEventListener('change', () => {
+      const from = wrap.querySelector('.date-from').value;
+      const to = wrap.querySelector('.date-to').value;
+      if (!from || !to) return;
+      syncDateRangeUI(from, to, null);
+      renderRange(from, to);
+    });
   });
 });
+
+const DEFAULT_RANGE = quickRange('30');
 
 /* ============================= RENDER ============================= */
 function renderAll() {
   renderTrend(document.getElementById('trendRange').value);
-  renderPeriod(document.querySelector('.period-select').value);
+  const rangeToUse = currentRange || DEFAULT_RANGE;
+  renderRange(rangeToUse[0], rangeToUse[1]);
 
   // creative share + tables (fixed 30일)
   renderShareBar('creativeShare', CREATIVE_SHARE.map(s => ({
     ...s,
     color: s.label.includes('있는') ? css('--status-good') : (s.label.includes('낮은') ? css('--status-critical') : css('--status-muted')),
   })));
-  fillTable('topCreativeTable', ['소재명','지출','구매','전환값','ROAS'],
-    topCreatives.map(d=>[d.name, fmtWon(d.spend), fmtNum(d.purch)+'건', fmtWon(d.value), `<span class="badge ${roasBadgeClass(d.roas)}">${fmtRoas(d.roas)}</span>`]));
-  fillTable('badCreativeTable', ['소재명','지출','구매','전환값','ROAS','상태'],
+  fillTable('topCreativeTable', ['소재', '소재명','지출','구매','전환값','ROAS'],
+    topCreatives.map(d=>[creativeThumbHtml(d.name, 'sm'), d.name, fmtWon(d.spend), fmtNum(d.purch)+'건', fmtWon(d.value), `<span class="badge ${roasBadgeClass(d.roas)}">${fmtRoas(d.roas)}</span>`]));
+  fillTable('badCreativeTable', ['소재', '소재명','지출','구매','전환값','ROAS','상태'],
     badCreatives.map(d=>{
       const roasTxt = d.roas===null ? '—' : fmtRoas(d.roas);
       const badgeClass = d.roas===null ? 'muted' : 'critical';
-      return [d.name, fmtWon(d.spend), fmtNum(d.purch)+'건', fmtWon(d.value), roasTxt, `<span class="badge ${badgeClass}">${d.tag}</span>`];
+      return [creativeThumbHtml(d.name, 'sm'), d.name, fmtWon(d.spend), fmtNum(d.purch)+'건', fmtWon(d.value), roasTxt, `<span class="badge ${badgeClass}">${d.tag}</span>`];
     }));
 
   // demographics
